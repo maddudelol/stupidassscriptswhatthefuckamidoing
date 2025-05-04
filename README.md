@@ -1,0 +1,2 @@
+# stupidassscriptswhatthefuckamidoing
+roblox scripts specifically
