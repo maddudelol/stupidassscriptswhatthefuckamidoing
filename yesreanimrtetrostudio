@@ -230,7 +230,7 @@ Join(
 )
 
 Join(
-	OldChar["SHAGGY"], -- the Accessory
+	OldChar["295456068"], -- the Accessory
 	NewChar["Left Leg"], -- Part to attach to
 	Vector3.new(0,0,0), -- offset
 	rotate(90,0,0), -- Rotation
