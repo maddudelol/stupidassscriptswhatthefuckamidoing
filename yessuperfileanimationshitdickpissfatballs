@@ -387,10 +387,14 @@ Play.MouseButton1Up:Connect(function()
 
 		local Frames = nil
 
-  local obj1 = game:GetObjects("rbxassetid://"..aniid.Text):GetChildren()[1]
-        for i,v in pairs(obj1) do
-            Frames = v:GetChildren()
-        end
+		local objs = game:GetObjects("rbxassetid://" .. aniid.Text)
+		if #objs > 0 then
+			local animation = objs[1]
+			for _, v in pairs(animation:GetChildren()) do
+				Frames = v:GetChildren()
+			end
+		end
+
 
 		table.sort(Frames, function(a,b)
 			return a.Time < b.Time
