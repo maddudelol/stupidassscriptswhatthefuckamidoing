@@ -19,7 +19,6 @@ local TextBox = Instance.new("TextBox")
 SexIdrisHack.Name = "SexIdrisHack"
 SexIdrisHack.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 SexIdrisHack.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-SexIdrisHack.ResetOnSpawn = false
 
 Frame.Parent = SexIdrisHack
 Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -118,7 +117,7 @@ TextBox.TextWrapped = true
 
 -- Scripts:
 
-local function FZTRDN_fake_script() -- TextButton.LocalScript 
+local function HJXELW_fake_script() -- TextButton.LocalScript 
 	local script = Instance.new('LocalScript', TextButton)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -135,8 +134,8 @@ local function FZTRDN_fake_script() -- TextButton.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(FZTRDN_fake_script)()
-local function YZAF_fake_script() -- TextButton_2.LocalScript 
+coroutine.wrap(HJXELW_fake_script)()
+local function IGYN_fake_script() -- TextButton_2.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_2)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -210,8 +209,8 @@ local function YZAF_fake_script() -- TextButton_2.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(YZAF_fake_script)()
-local function EGTT_fake_script() -- TextButton_3.LocalScript 
+coroutine.wrap(IGYN_fake_script)()
+local function IPDLCL_fake_script() -- TextButton_3.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_3)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -327,8 +326,8 @@ local function EGTT_fake_script() -- TextButton_3.LocalScript
 		end)
 	end)
 end
-coroutine.wrap(EGTT_fake_script)()
-local function PZNDLZ_fake_script() -- TextButton_4.LocalScript 
+coroutine.wrap(IPDLCL_fake_script)()
+local function SUEHJBT_fake_script() -- TextButton_4.LocalScript 
 	local script = Instance.new('LocalScript', TextButton_4)
 
 	script.Parent.MouseButton1Down:Connect(function()
@@ -339,9 +338,9 @@ local function PZNDLZ_fake_script() -- TextButton_4.LocalScript
 		workspace:WaitForChild("Main"):WaitForChild("ChangeFace"):FireServer(unpack(args))
 	end)
 end
-coroutine.wrap(PZNDLZ_fake_script)()
-local function SUFNPYF_fake_script() -- SexIdrisHack.Dragify 
-	local script = Instance.new('LocalScript', SexIdrisHack)
+coroutine.wrap(SUEHJBT_fake_script)()
+local function FAWPDVD_fake_script() -- Frame.Dragify 
+	local script = Instance.new('LocalScript', Frame)
 
 	local UIS = game:GetService("UserInputService")
 	function dragify(Frame)
@@ -381,4 +380,4 @@ local function SUFNPYF_fake_script() -- SexIdrisHack.Dragify
 	dragify(script.Parent)
 	
 end
-coroutine.wrap(SUFNPYF_fake_script)()
+coroutine.wrap(FAWPDVD_fake_script)()
