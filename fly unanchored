@@ -1,0 +1,207 @@
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local LocalPlayer = Players.LocalPlayer
+local IYMouse = LocalPlayer:GetMouse()
+local uis = game:GetService("UserInputService")
+
+-- Global state
+getgenv().QEfly = true
+getgenv().FLYING = false
+getgenv().Network = getgenv().Network or {
+	BaseParts = {};
+	FakeConnections = {};
+	Connections = {};
+	CharacterRelative = false;
+	Output = {
+		Enabled = true;
+		Prefix = "[NETWORK] ";
+		Send = function(Type, Output, BypassOutput)
+			if typeof(Type) == "function" and (Type == print or Type == warn or Type == error) and typeof(Output) == "string" then
+				if getgenv().Network.Output.Enabled or BypassOutput then
+					Type(getgenv().Network.Output.Prefix .. Output)
+				end
+			end
+		end,
+	};
+}
+
+local Network = getgenv().Network
+Network.Output.Send(print, ": Loading.")
+
+-- Constants
+Network.Velocity = Vector3.new(14.46262424,14.46262424,14.46262424)
+
+-- Bindable Event
+Network.SuperStepper = Instance.new("BindableEvent")
+for _, event in pairs({RunService.Stepped, RunService.Heartbeat}) do
+	event:Connect(function()
+		Network.SuperStepper:Fire(Network.SuperStepper, tick())
+	end)
+end
+
+-- RetainPart
+function Network.RetainPart(Part)
+	assert(Part and Part:IsA("BasePart") and Part:IsDescendantOf(workspace), "Invalid part passed.")
+
+	if not table.find(Network.BaseParts, Part) then
+		if Network.CharacterRelative then
+			local Character = LocalPlayer.Character
+			if not (Character and Character.PrimaryPart) then
+				Network.Output.Send(warn, "Character has no PrimaryPart.")
+				return
+			end
+			if (Character.PrimaryPart.Position - Part.Position).Magnitude > 1000 then
+				Network.Output.Send(warn, "Part is too far from Character.")
+				return
+			end
+		end
+		table.insert(Network.BaseParts, Part)
+		Part.CustomPhysicalProperties = PhysicalProperties.new(0, 0, 0, 0, 0)
+		Network.Output.Send(print, "Ownership retained for part " .. Part:GetFullName())
+	else
+		Network.Output.Send(warn, "Part already registered.")
+	end
+end
+
+-- RemovePart
+function Network.RemovePart(Part)
+	local idx = table.find(Network.BaseParts, Part)
+	if idx then
+		table.remove(Network.BaseParts, idx)
+		Network.Output.Send(print, "Ownership removed for part " .. Part:GetFullName())
+	end
+end
+
+-- Ownership management
+Network.PartOwnership = {
+	Enabled = false,
+	PreMethodSettings = {},
+}
+
+coroutine.wrap(function()
+	if Network.PartOwnership.Enabled then return end
+
+	Network.PartOwnership.Enabled = true
+	Network.PartOwnership.PreMethodSettings.ReplicationFocus = LocalPlayer.ReplicationFocus
+	LocalPlayer.ReplicationFocus = workspace
+	Network.PartOwnership.PreMethodSettings.SimulationRadius = gethiddenproperty(LocalPlayer, "SimulationRadius")
+
+	Network.PartOwnership.Connection = Network.SuperStepper.Event:Connect(function()
+		pcall(function()
+			sethiddenproperty(LocalPlayer, "SimulationRadius", math.huge)
+		end)
+
+		for _, Part in ipairs(Network.BaseParts) do
+			if Part:IsDescendantOf(workspace) then
+				if Network.CharacterRelative then
+					local Character = LocalPlayer.Character
+					if not (Character and Character.PrimaryPart) then return end
+					local Distance = (Character.PrimaryPart.Position - Part.Position).Magnitude
+					if Distance > 1000 then
+						Network.RemovePart(Part)
+						continue
+					end
+				end
+				-- Prevent the part from being ejected or glitched out
+				Part.Velocity = Network.Velocity + Vector3.new(0, math.cos(tick()*10)/100, 0)
+			else
+				Network.RemovePart(Part)
+			end
+		end
+	end)
+
+	Network.Output.Send(print, "PartOwnership enabled.")
+end)()
+
+-- Fly logic
+local flyKeyDown, flyKeyUp
+local object
+
+IYMouse.Button1Down:Connect(function()
+	if not uis:IsKeyDown(Enum.KeyCode.LeftControl) then return end
+	object = IYMouse.Target
+	if not (object and object:IsA("BasePart") and not object.Anchored) then return end
+
+	Network.RetainPart(object)
+	LocalPlayer.Character.HumanoidRootPart.Anchored = true
+	game.Workspace.CurrentCamera.CameraSubject = object
+
+	-- Fly variables
+	local CONTROL = {F = 0, B = 0, L = 0, R = 0, Q = 0, E = 0}
+	local lCONTROL = {F = 0, B = 0, L = 0, R = 0}
+	local SPEED = 0
+
+	local BG = Instance.new("BodyGyro", object)
+	BG.P = 9e4
+	BG.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+	BG.cframe = object.CFrame
+
+	local BV = Instance.new("BodyVelocity", object)
+	BV.velocity = Vector3.new()
+	BV.maxForce = Vector3.new(9e9, 9e9, 9e9)
+
+	getgenv().FLYING = true
+
+	if flyKeyDown then flyKeyDown:Disconnect() end
+	if flyKeyUp then flyKeyUp:Disconnect() end
+
+	local function FlyControl()
+		while getgenv().FLYING do
+			task.wait()
+
+			if CONTROL.L + CONTROL.R ~= 0 or CONTROL.F + CONTROL.B ~= 0 or CONTROL.Q + CONTROL.E ~= 0 then
+				SPEED = 50
+			else
+				SPEED = 0
+			end
+
+			if SPEED ~= 0 then
+				BV.velocity =
+					(workspace.CurrentCamera.CFrame.lookVector * (CONTROL.F + CONTROL.B) +
+					(workspace.CurrentCamera.CFrame * CFrame.new(CONTROL.L + CONTROL.R, (CONTROL.Q + CONTROL.E) * 0.2, 0)).p -
+					workspace.CurrentCamera.CFrame.p) * SPEED
+
+				lCONTROL = {F = CONTROL.F, B = CONTROL.B, L = CONTROL.L, R = CONTROL.R}
+			else
+				BV.velocity = Vector3.new()
+			end
+
+			BG.cframe = workspace.CurrentCamera.CFrame
+		end
+		BG:Destroy()
+		BV:Destroy()
+	end
+
+	task.spawn(FlyControl)
+
+	flyKeyDown = IYMouse.KeyDown:Connect(function(KEY)
+		local key = KEY:lower()
+		if key == 'w' then CONTROL.F = 1
+		elseif key == 's' then CONTROL.B = -1
+		elseif key == 'a' then CONTROL.L = -1
+		elseif key == 'd' then CONTROL.R = 1
+		elseif key == 'e' and QEfly then CONTROL.Q = 2
+		elseif key == 'q' and QEfly then CONTROL.E = -2 end
+	end)
+
+	flyKeyUp = IYMouse.KeyUp:Connect(function(KEY)
+		local key = KEY:lower()
+		if key == 'w' then CONTROL.F = 0
+		elseif key == 's' then CONTROL.B = 0
+		elseif key == 'a' then CONTROL.L = 0
+		elseif key == 'd' then CONTROL.R = 0
+		elseif key == 'e' then CONTROL.Q = 0
+		elseif key == 'q' then CONTROL.E = 0 end
+	end)
+end)
+
+-- Stop fly with LeftShift
+IYMouse.KeyDown:Connect(function(KEY)
+	if KEY:lower() == "shift" and uis:IsKeyDown(Enum.KeyCode.LeftShift) and object then
+		getgenv().FLYING = false
+		Network.RemovePart(object)
+		object.Velocity = Vector3.new(0, -1, 0)
+		LocalPlayer.Character.HumanoidRootPart.Anchored = false
+		game.Workspace.CurrentCamera.CameraSubject = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+	end
+end)
