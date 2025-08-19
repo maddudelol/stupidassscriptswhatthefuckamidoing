@@ -1024,10 +1024,10 @@ Empyrean = Start({
 { MeshId = "17360222628", Names = { "Left Leg" }, Offset = CFrame.Angles(0, -90, 0), TextureId = "17360222682" },
 
 -- ✅ LeftExtraArm  
-{ MeshId = "17360218438", Names = { "Left Arm" }, Offset = CFrame.Angles(0, -90, 0), TextureId = "17360218680" },
+{ MeshId = "17360218438", Names = { "Left Arm" }, Offset = CFrame.Angles(0, -90, 1.57), TextureId = "17360218680" },
 
 -- ✅ RightExtraArm  
-{ MeshId = "17360218438", Names = { "Right Arm" }, Offset = CFrame.Angles(0, -90, 0), TextureId = "17360218680" },
+{ MeshId = "17360218438", Names = { "Right Arm" }, Offset = CFrame.Angles(0, -90, 1.57), TextureId = "17360218680" },
 
 -- ✅ TorsoExtension  
 { MeshId = "17360215289", Name = "Torso", Offset = CFrame.identity, TextureId = "17360215476" },
