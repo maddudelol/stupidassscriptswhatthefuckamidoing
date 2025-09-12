@@ -1,7 +1,6 @@
 
 game.Players.LocalPlayer.Character.Humanoid.BreakJointsOnDeath = false
 
---------------------[ HATS LMAO ]--------------------
 
 local torsohat = "Star ManAccessory"
 local headhat = "LooseSideBuns"
@@ -14,8 +13,6 @@ local cheek1hat = "Racing Helmet USA"
 local cheek2hat = "Stinger77"
 local boobs1hat = "Accessory (FullyReflectiveShinyBall)"
 local boobs2hat = "CueBall"
-
---------------------[ WHAT THE FUCK ]--------------------
 
 -- SCRIPT MADE BY CGX_JX#1035
 
@@ -2189,7 +2186,7 @@ if RunService:IsStudio() then
 	speedteller.Font = Enum.Font.DenkOne
 	info.BackgroundTransparency = 1
 	info.TextColor3 = Color3.new(1,1,1)
-	info.Text = controlslist
+	info.Text = "no."
 	info.Position = UDim2.new(0.899,0,0.6,0)
 	info.Size = UDim2.new(0,112,0,240)
 	info.TextScaled = true
@@ -2209,7 +2206,7 @@ else
 	guifunny.Name = "FunnyGUI"
 	info.BackgroundTransparency = 1
 	info.TextColor3 = Color3.new(1,1,1)
-	info.Text = controlslist
+	info.Text = "nope"
 	info.Position = UDim2.new(0.899,0,0.6,0)
 	info.Size = UDim2.new(0,112,0,240)
 	info.TextScaled = true
